@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MTB Holidays – International tour packages</title>
+<meta name="description" content="International holiday packages with flights, hotels, visas and local guides handled in one itinerary.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF3F0; --surface:#FFFFFF; --ink:#10262B; --muted:#4F6569; --line:rgba(16,38,43,.16);
+  --teal:#0E3B43; --teal-2:#17525C; --signal:#F5B82E; --signal-ink:#3A2A00; --focus:#0A6B78;
+  --free:#1F7A5A; --free-bg:rgba(31,122,90,.12); --arr:#8A6100; --arr-bg:rgba(245,184,46,.22); --adv:#B23A24; --adv-bg:rgba(226,85,59,.13);
+  --font:"Bricolage Grotesque","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1B1F; --surface:#112a30; --ink:#E7F0ED; --muted:#9DB4B7; --line:rgba(231,240,237,.16);
+    --teal:#0E3B43; --teal-2:#1B5B66; --focus:#7FD3DE;
+    --free:#6FD3A8; --free-bg:rgba(111,211,168,.14); --arr:#F5C75A; --arr-bg:rgba(245,184,46,.16); --adv:#FF9B85; --adv-bg:rgba(255,155,133,.15);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1B1F; --surface:#112a30; --ink:#E7F0ED; --muted:#9DB4B7; --line:rgba(231,240,237,.16);
+  --teal:#0E3B43; --teal-2:#1B5B66; --focus:#7FD3DE;
+  --free:#6FD3A8; --free-bg:rgba(111,211,168,.14); --arr:#F5C75A; --arr-bg:rgba(245,184,46,.16); --adv:#FF9B85; --adv-bg:rgba(255,155,133,.15);
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none !important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+
+/* header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
+.brand svg{width:30px;height:30px;flex:none}
+nav{display:flex;align-items:center;gap:1.6rem;font-weight:500;font-size:.98rem}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover,nav a[aria-current="page"]{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:46px;padding:.65rem 1.3rem;border-radius:999px;border:2px solid transparent;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .15s ease,background .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-signal{background:var(--signal);color:var(--signal-ink)}
+.btn-signal:hover{background:#ffc94d}
+.btn-dark{background:var(--teal);color:#fff}
+.btn-dark:hover{background:var(--teal-2)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:var(--bg)}
+@media (max-width:820px){nav a:not(.btn):not(.keep){display:none}}
+@media (max-width:420px){nav{gap:.9rem}.btn{padding:.6rem 1rem}}
+
+/* hero */
+.hero{padding:clamp(2.5rem,7vw,5.5rem) 0 clamp(2rem,5vw,3.5rem)}
+.hero h1{font-size:clamp(2.5rem,7vw,5.4rem);line-height:.98;letter-spacing:-.035em;font-weight:750;font-stretch:88%;margin:0;max-width:15ch}
+.hero-row{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:flex-end;justify-content:space-between;margin-top:1.6rem}
+.hero p{margin:0;max-width:46ch;color:var(--muted);font-size:1.15rem}
+.hero .ctas{display:flex;gap:.75rem;flex-wrap:wrap}
+
+/* departure board */
+.board{background:var(--teal);color:#fff;border-radius:18px;padding:clamp(1rem,2.5vw,1.6rem);margin-top:clamp(2rem,4vw,3rem);box-shadow:0 0 0 1px rgba(255,255,255,.06) inset}
+.board-head,.board-row{display:grid;grid-template-columns:2.1fr 1.5fr .8fr 1.5fr 1.2fr;gap:1rem;align-items:center;padding:.8rem .5rem}
+.board-head{color:rgba(255,255,255,.62);font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.18);padding-top:.2rem}
+.board-row{width:100%;border:0;border-bottom:1px solid rgba(255,255,255,.1);background:transparent;color:#fff;font:inherit;text-align:left;cursor:pointer;font-variant-numeric:tabular-nums;transform-origin:50% 0;animation:flip .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 90ms + 150ms)}
+.board-row:last-child{border-bottom:0}
+.board-row:hover,.board-row:focus-visible{background:rgba(255,255,255,.07)}
+.board-row .dest{font-weight:650;font-size:1.25rem;letter-spacing:-.01em;color:var(--signal)}
+.board-row .price{font-weight:650;text-align:right}
+.board-head span:last-child{text-align:right}
+@keyframes flip{from{transform:perspective(600px) rotateX(-88deg);opacity:0}to{transform:perspective(600px) rotateX(0);opacity:1}}
+.board-foot{margin:.9rem .5rem 0;color:rgba(255,255,255,.62);font-size:.9rem}
+@media (max-width:720px){
+  .board-head,.board-row{grid-template-columns:1.7fr .7fr 1.1fr}
+  .board-head span:nth-child(2),.board-head span:nth-child(4),.board-row .ctry,.board-row .best{display:none}
+}
+
+/* sections */
+section{padding:clamp(3rem,7vw,5.5rem) 0}
+h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.05;letter-spacing:-.028em;font-weight:720;font-stretch:90%;margin:0 0 .6rem}
+.lede{color:var(--muted);max-width:52ch;margin:0}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.2rem;margin-bottom:2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font:inherit;font-size:.95rem;font-weight:550;padding:.45rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;min-height:40px;text-decoration:none;display:inline-flex;align-items:center}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* package cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem}
+.card{display:block;text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;cursor:pointer;transition:border-color .15s ease}
+.card:hover{border-color:var(--ink)}
+.art{position:relative;display:block;aspect-ratio:400/240;background:var(--teal);overflow:hidden}
+.art svg{display:block;width:100%;height:100%}
+.art .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.card .body{display:block;padding:1rem 1.1rem 1.2rem}
+.card .ctry{display:block;color:var(--muted);font-size:.92rem}
+.card .name{display:block;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:.1rem 0 .55rem}
+.card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;border-top:1px dashed var(--line);padding-top:.7rem;font-size:.95rem;color:var(--muted)}
+.card .meta b{color:var(--ink);font-size:1.15rem;font-weight:700}
+.card .vline{display:block;margin-top:.45rem;font-size:.9rem;color:var(--muted)}
+.empty{color:var(--muted);padding:2rem 0}
+
+/* included */
+.split{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+.incl{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.incl li{display:grid;grid-template-columns:11rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.incl strong{font-weight:650}
+.incl span{color:var(--muted)}
+.incl a{color:var(--ink);font-weight:600}
+@media (max-width:560px){.incl li{grid-template-columns:1fr;gap:.2rem}}
+
+/* visa band on home */
+.visaband{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(1.5rem,5vw,4rem);align-items:center;border:1.5px solid var(--ink);border-radius:20px;padding:clamp(1.3rem,3.5vw,2.4rem)}
+@media (max-width:820px){.visaband{grid-template-columns:1fr}}
+.visaband h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+
+/* steps */
+.steps{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s}
+.steps li{position:relative;padding-top:1.9rem;border-top:2px solid var(--ink);counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;top:-1px;left:0;transform:translateY(-50%);background:var(--signal);color:var(--signal-ink);width:1.9rem;height:1.9rem;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.95rem}
+.steps h3{margin:0 0 .3rem;font-size:1.15rem;font-weight:680}
+.steps p{margin:0;color:var(--muted);font-size:.98rem}
+@media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* enquiry */
+.enquiry{background:var(--teal);color:#fff;border-radius:22px;padding:clamp(1.4rem,4vw,3rem);display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(1.5rem,5vw,4rem)}
+@media (max-width:860px){.enquiry{grid-template-columns:1fr}}
+.enquiry h2{color:#fff}
+.enquiry .lede{color:rgba(255,255,255,.75)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fields .full{grid-column:1 / -1}
+@media (max-width:520px){.fields{grid-template-columns:1fr}}
+label{display:block;font-size:.92rem;font-weight:550;margin-bottom:.3rem;color:rgba(255,255,255,.9)}
+input[type=text],input[type=tel],input[type=number],input:not([type]),select,textarea{width:100%;font:inherit;font-size:1rem;color:#10262B;background:#fff;border:2px solid transparent;border-radius:10px;padding:.7rem .8rem;min-height:46px}
+textarea{min-height:88px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.err{color:#FFD2C7;font-size:.9rem;min-height:1.3em;margin:.6rem 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+.enquiry .btn-line{border-color:#fff;color:#fff}
+.enquiry .btn-line:hover{background:#fff;color:var(--teal)}
+
+/* footer */
+footer{padding:2.5rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 3rem;justify-content:space-between}
+footer p{margin:0;max-width:60ch}
+
+/* dialog */
+dialog{border:0;padding:0;width:min(760px,100% - 1.5rem);max-height:calc(100% - 2rem);border-radius:18px;background:var(--surface);color:var(--ink);overflow:auto}
+dialog::backdrop{background:rgba(6,20,24,.65)}
+.d-art{aspect-ratio:400/150;background:var(--teal);overflow:hidden;position:relative}
+.d-art .art{aspect-ratio:auto;height:100%}
+.d-body{padding:1.4rem 1.6rem 1.8rem}
+.d-close{position:sticky;top:.6rem;float:right;margin:.6rem .6rem 0 0;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);font-size:1.4rem;cursor:pointer;line-height:1}
+.d-body h3{font-size:2rem;letter-spacing:-.025em;line-height:1.05;margin:0 0 .2rem;font-weight:720}
+.d-sub{color:var(--muted);margin:0 0 1.2rem}
+.credit{font-size:.82rem;color:var(--muted);margin:-.8rem 0 1rem}
+.d-cols{display:grid;grid-template-columns:1.4fr 1fr;gap:1.6rem}
+@media (max-width:640px){.d-cols{grid-template-columns:1fr}}
+.d-body h4{margin:0 0 .5rem;font-size:1.02rem;font-weight:680}
+.days{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.days li{padding:0 0 .9rem 1rem;position:relative;font-size:.98rem}
+.days li::before{content:"";position:absolute;left:-6px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--signal)}
+.days b{display:block;font-weight:650}
+.days span{color:var(--muted)}
+.hl{margin:0 0 1.1rem;padding-left:1.1rem;color:var(--muted);font-size:.98rem}
+.vlinks{display:flex;flex-direction:column;gap:.35rem;font-size:.98rem}
+.vlinks a{font-weight:600}
+.d-foot{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;align-items:center;justify-content:space-between;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.d-foot .p{font-size:1.5rem;font-weight:720;letter-spacing:-.02em}
+.d-foot .p small{display:block;font-size:.85rem;font-weight:450;color:var(--muted);letter-spacing:0}
+
+/* ---------- visa views ---------- */
+.vpage{padding:clamp(2rem,5vw,3.5rem) 0 clamp(3rem,7vw,5rem)}
+.crumb{display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;color:var(--muted);font-weight:550;margin-bottom:1.2rem;min-height:40px}
+.crumb:hover{color:var(--ink)}
+.vpage h1{font-size:clamp(2.2rem,5.5vw,4rem);line-height:1;letter-spacing:-.032em;font-weight:740;font-stretch:90%;margin:0 0 .8rem}
+.notice{border-left:5px solid var(--signal);background:var(--surface);border-radius:0 12px 12px 0;padding:.9rem 1.1rem;margin:1.5rem 0 2rem;max-width:72ch;font-size:.98rem}
+.notice b{font-weight:650}
+.badge{display:inline-flex;align-items:center;gap:.45rem;padding:.25rem .75rem .25rem .6rem;border-radius:999px;font-size:.9rem;font-weight:600;white-space:nowrap}
+.badge::before{content:"";width:.6rem;height:.6rem;border-radius:50%;background:currentColor}
+.b-free{background:var(--free-bg);color:var(--free)}
+.b-arrival{background:var(--arr-bg);color:var(--arr)}
+.b-advance{background:var(--adv-bg);color:var(--adv)}
+
+.vtable{border-top:1px solid var(--line);margin-top:1.2rem}
+.vrow{display:grid;grid-template-columns:1.4fr 1.6fr 1.5fr 1.7fr 1.9fr;gap:1rem;align-items:center;padding:1rem .4rem;border-bottom:1px solid var(--line);text-decoration:none;color:inherit}
+.vrow:hover{background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.vrow.vh{color:var(--muted);font-size:.9rem;padding-top:.7rem;padding-bottom:.7rem;pointer-events:none}
+.vrow .cn{font-weight:680;font-size:1.15rem;letter-spacing:-.01em}
+.vrow .cn small{display:block;font-weight:450;font-size:.85rem;color:var(--muted);letter-spacing:0}
+.vrow span{font-size:.97rem}
+.vrow > *{min-width:0}
+@media (max-width:900px){
+  .vrow{grid-template-columns:1.3fr 1.6fr 1.3fr}
+  .vrow > :nth-child(4),.vrow > :nth-child(5){display:none}
+  .badge{white-space:normal}
+}
+@media (max-width:640px){
+  .vrow{grid-template-columns:1fr;gap:.4rem;padding:1.1rem .2rem}
+  .vrow.vh{display:none}
+  .vrow > :nth-child(3){color:var(--muted)}
+}
+
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0 1.5rem;border-top:2px solid var(--ink);margin:1.6rem 0 2.4rem}
+.fact{padding:1rem 1.2rem 1rem 0;border-bottom:1px solid var(--line)}
+.fact dt{color:var(--muted);font-size:.9rem;margin:0 0 .15rem}
+.fact dd{margin:0;font-weight:600;font-size:1.05rem;line-height:1.35}
+@media (max-width:820px){.facts{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.facts{grid-template-columns:1fr}}
+.vcols{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(1.5rem,5vw,4rem);align-items:start}
+@media (max-width:820px){.vcols{grid-template-columns:1fr}}
+.vpage h2{font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 .8rem}
+.checks{list-style:none;margin:0 0 2rem;padding:0}
+.checks li{border-bottom:1px solid var(--line)}
+.checks label{display:flex;gap:.8rem;align-items:flex-start;padding:.85rem 0;cursor:pointer;color:var(--ink);font-size:1rem;font-weight:450;margin:0}
+.checks input{width:1.3rem;height:1.3rem;min-height:0;margin:.15rem 0 0;flex:none;accent-color:var(--teal-2)}
+.checks input:checked + span{color:var(--muted);text-decoration:line-through}
+.plain{margin:0 0 2rem;padding-left:1.1rem;color:var(--ink)}
+.plain li{margin-bottom:.5rem}
+.notes p{margin:0 0 .8rem;color:var(--muted);max-width:60ch}
+.vcta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.stamp{margin-top:2rem;color:var(--muted);font-size:.9rem;max-width:70ch}
+
+@media (prefers-reduced-motion: reduce){
+  .board-row{animation:none}
+  html{scroll-behavior:auto}
+  .btn,.card{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#/" aria-label="MTB Holidays home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#0E3B43"/><path d="M6 22 C10 8, 22 8, 26 22" fill="none" stroke="#F5B82E" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 4.2"/><circle cx="6" cy="22" r="2.4" fill="#fff"/><circle cx="26" cy="22" r="2.4" fill="#F5B82E"/></svg>
+      MTB Holidays
+    </a>
+    <nav aria-label="Main">
+      <a href="#/packages">Packages</a>
+      <a class="keep" href="#/visa" id="nav-visa">Visa help</a>
+      <a href="#/how">How it works</a>
+      <a class="btn btn-signal" href="#/enquire">Plan my trip</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HOME ================= -->
+<div id="view-home">
+  <div class="wrap hero">
+    <h1>Holidays abroad, planned end to end.</h1>
+    <div class="hero-row">
+      <p>Flights, hotels, visas and local guides in one itinerary, with one person to call before and during your trip.</p>
+      <div class="ctas">
+        <a class="btn btn-signal" href="#/packages">Browse packages</a>
+        <a class="btn btn-line" href="#/visa">Check visa rules</a>
+      </div>
+    </div>
+
+    <div class="board" role="region" aria-label="Popular international packages">
+      <div class="board-head" aria-hidden="true">
+        <span>Destination</span><span>Country</span><span>Nights</span><span>Best time</span><span>From, per person</span>
+      </div>
+      <div id="board"></div>
+      <p class="board-foot">Select any row to see the day-by-day plan.</p>
+    </div>
+  </div>
+
+  <section id="packages" style="padding-top:2rem">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>International packages</h2>
+          <p class="lede">Every package can be changed: more nights, a different hotel, or two countries in one trip.</p>
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Filter by region"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>No packages in this region yet. Tell us where you want to go and we'll build one.</p>
+    </div>
+  </section>
+
+  <section id="included" style="padding-top:1rem">
+    <div class="wrap split">
+      <div>
+        <h2>What every package covers</h2>
+        <p class="lede">You see what is included before you pay, and anything optional is listed separately.</p>
+      </div>
+      <ul class="incl">
+        <li><strong>Flights</strong><span>Return international flights, with domestic legs and airport transfers where the route needs them.</span></li>
+        <li><strong>Stay</strong><span>Hotels or resorts with breakfast, chosen by location first and then by budget.</span></li>
+        <li><strong>Visa and documents</strong><span>Checklist, form filling and appointment support. Government visa fees are shown separately. <a href="#/visa">See visa rules by country</a>.</span></li>
+        <li><strong>Sightseeing</strong><span>Private or shared transfers and guided tours as listed in each day's plan.</span></li>
+        <li><strong>Travel insurance</strong><span>Optional cover for medical costs, cancellations and baggage. Required for the Schengen visa.</span></li>
+        <li><strong>Support during travel</strong><span>A contact number that works while you are abroad, not only at office hours back home.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem;padding-bottom:0">
+    <div class="wrap">
+      <div class="visaband">
+        <div>
+          <h2>Not sure if you need a visa?</h2>
+          <p class="lede">Some destinations need nothing but an online arrival form. Others need a visa weeks in advance. Pick a country to see which.</p>
+        </div>
+        <div class="chips" id="visa-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="padding-top:clamp(3rem,7vw,5.5rem)">
+    <div class="wrap">
+      <h2>From first message to boarding pass</h2>
+      <ol class="steps">
+        <li><h3>Tell us the basics</h3><p>Where, roughly when, and how many people. A rough idea is enough.</p></li>
+        <li><h3>Get a written itinerary</h3><p>Day-by-day plan with a total price, ready to share with family.</p></li>
+        <li><h3>Confirm and pay</h3><p>Pay a booking amount to hold flights and rooms. The balance is due before travel.</p></li>
+        <li><h3>Travel with documents ready</h3><p>Vouchers, tickets and visas arrive together, plus a local contact for the trip.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="enquire" style="padding-top:1rem">
+    <div class="wrap">
+      <div class="enquiry">
+        <div>
+          <h2>Plan my trip</h2>
+          <p class="lede">Share a few details and we'll reply with an itinerary and price. Your message opens in WhatsApp or email, ready to send.</p>
+        </div>
+        <div>
+          <div class="fields">
+            <div><label for="f-name">Your name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-phone">Phone number</label><input id="f-phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+            <div class="full"><label for="f-dest">Destination</label><select id="f-dest"></select></div>
+            <div><label for="f-trav">Travellers</label><input id="f-trav" type="number" min="1" max="30" value="2"></div>
+            <div><label for="f-month">Travel month</label><select id="f-month"></select></div>
+            <div class="full"><label for="f-note">Anything else? (optional)</label><textarea id="f-note" placeholder="Honeymoon, kids, budget, hotel type…"></textarea></div>
+          </div>
+          <p class="err" id="err" role="alert"></p>
+          <div class="actions">
+            <a class="btn btn-signal" id="send-wa" href="#/enquire" target="_blank" rel="noopener">Send on WhatsApp</a>
+            <a class="btn btn-line" id="send-mail" href="#/enquire">Send by email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= VISA ================= -->
+<div id="view-visa" hidden>
+  <div class="wrap vpage" id="visa-root"></div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Prices are indicative, per person on twin sharing, and depend on travel dates, flight fares and availability. The final price is confirmed in your written itinerary. Visa information is a guide for Indian passport holders and is not legal advice.</p>
+    <p>© <span id="yr"></span> MTB Holidays</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="d-title">
+  <button class="d-close" id="d-close" aria-label="Close">×</button>
+  <div class="d-art" id="d-art"></div>
+  <div class="d-body" id="d-body"></div>
+</dialog>
+
+<script>
+/* ---- Edit these three lines to make the enquiry buttons yours ---- */
+var WHATSAPP = "919442294888";          // country code + number, digits only
+var EMAIL    = "mytourbee@gmail.com";
+var BRAND    = "MTB Holidays";
+var VISA_CHECKED = "21 September 2026";
+
+/* ---- PHOTOS ----
+   Put your photo files in an "images" folder next to this file, named as below.
+   If a file is missing, the card falls back to the drawn artwork automatically.
+   You can also paste a data: URI into "src". Add a photographer credit if the licence needs one. */
+var PHOTOS = {
+  bali:     {src:"images/bali.jpg",     alt:"Rice terraces near Ubud, Bali",              credit:""},
+  dubai:    {src:"images/dubai.jpg",    alt:"Dubai skyline with Burj Khalifa at dusk",    credit:""},
+  thailand: {src:"images/thailand.jpg", alt:"Longtail boats off a Phuket beach",          credit:""},
+  singmy:   {src:"images/singmy.jpg",   alt:"Marina Bay skyline, Singapore",              credit:""},
+  maldives: {src:"images/maldives.jpg", alt:"Overwater villas in the Maldives",           credit:""},
+  swiss:    {src:"images/swiss.jpg",    alt:"Alpine lake and mountains in Switzerland",   credit:""},
+  vietnam:  {src:"images/vietnam.jpg",  alt:"Limestone islands in Ha Long Bay",           credit:""},
+  japan:    {src:"images/japan.jpg",    alt:"Mount Fuji with cherry blossoms",            credit:""}
+};
+
+/* ---- Package data: edit freely ---- */
+var PACKAGES = [
+  {id:"bali", name:"Bali", country:"Indonesia", region:"Southeast Asia", nights:6, price:54900, best:"Apr – Oct", art:"waves", visa:["indonesia"],
+   c:{sky:"#F6D7A8",sun:"#F26B3A",w1:"#1E8A8F",w2:"#136E77",w3:"#0E545E",isl:"#2F7D54"},
+   hl:["Ubud rice terraces and temple visits","Beach days in Seminyak and Nusa Dua","Sunset at Uluwatu"],
+   days:[["Days 1–2","Arrive in Denpasar and settle into a beach hotel"],["Days 3–4","Ubud: rice terraces, monkey forest, cooking class"],["Day 5","Kintamani volcano and coffee plantation drive"],["Day 6","Free day for spa, shopping or water sports"],["Day 7","Airport transfer and departure"]]},
+  {id:"dubai", name:"Dubai", country:"United Arab Emirates", region:"Middle East", nights:5, price:49900, best:"Nov – Mar", art:"skyline", visa:["uae"],
+   c:{sky:"#F2C48D",sun:"#E8743B",b1:"#0E3B43",b2:"#17525C",g:"#0A2A30"},
+   b:[[20,34,90],[60,26,130],[92,30,70],[128,22,175],[156,40,100],[202,24,200],[232,36,120],[274,28,80],[308,34,150],[348,30,95]],
+   hl:["Burj Khalifa observation deck","Desert safari with dinner","Dhow cruise at Dubai Marina"],
+   days:[["Day 1","Arrive, hotel check-in and Dubai Mall"],["Day 2","City tour: Jumeirah, Museum of the Future, Burj Khalifa"],["Day 3","Desert safari with camp dinner"],["Day 4","Abu Dhabi day trip with mosque visit"],["Day 5","Marina dhow cruise, then airport transfer"]]},
+  {id:"thailand", name:"Thailand", country:"Bangkok and Phuket", region:"Southeast Asia", nights:6, price:39900, best:"Nov – Apr", art:"waves", visa:["thailand"],
+   c:{sky:"#FBD9B5",sun:"#E4553B",w1:"#2AA5A0",w2:"#1B8A8C",w3:"#106B72",isl:"#3E7F5A"},
+   hl:["Grand Palace and floating market in Bangkok","Phi Phi Islands by speedboat","Old Phuket town evening walk"],
+   days:[["Days 1–3","Bangkok: temples, river cruise, street food evening"],["Day 4","Fly to Phuket and check in by the beach"],["Day 5","Phi Phi Islands day trip"],["Day 6","Free day, optional James Bond Island tour"],["Day 7","Transfer and departure"]]},
+  {id:"singmy", name:"Singapore & Malaysia", country:"Singapore and Kuala Lumpur", region:"Southeast Asia", nights:6, price:64900, best:"Feb – Sep", art:"skyline", visa:["singapore","malaysia"],
+   c:{sky:"#CDE8E4",sun:"#F5B82E",b1:"#1B5B66",b2:"#2E8A94",g:"#0E3B43"},
+   b:[[16,40,70],[62,26,120],[94,34,90],[134,30,150],[170,44,110],[220,28,170],[252,38,100],[296,30,140],[332,40,80]],
+   hl:["Gardens by the Bay light show","Sentosa island day","Petronas Towers and Batu Caves"],
+   days:[["Days 1–3","Singapore: Marina Bay, Gardens by the Bay, Sentosa"],["Day 4","Travel to Kuala Lumpur"],["Days 5–6","KL city tour, Batu Caves, Petronas Towers"],["Day 7","Airport transfer and departure"]]},
+  {id:"maldives", name:"Maldives", country:"Maldives", region:"Indian Ocean", nights:4, price:79900, best:"Nov – Apr", art:"waves", visa:["maldives"],
+   c:{sky:"#BFE6EA",sun:"#FFE08A",w1:"#4CC3C9",w2:"#2AA1AB",w3:"#137E8A",isl:"#E8D7A6"},
+   hl:["Overwater villa or beach villa stay","Snorkelling on the house reef","Sandbank sunset cruise"],
+   days:[["Day 1","Arrive at Malé and take a speedboat or seaplane to the resort"],["Days 2–4","Snorkelling, spa, sunset cruise, optional dolphin trip"],["Day 5","Transfer back to Malé and depart"]]},
+  {id:"swiss", name:"Switzerland", country:"Switzerland", region:"Europe", nights:7, price:189000, best:"May – Sep", art:"mountains", visa:["switzerland"],
+   c:{sky:"#DCEBF5",sun:"#F5B82E",m1:"#6E8FA8",m2:"#3F6480",g:"#4C8B5A"},
+   hl:["Jungfraujoch, the top of Europe","Lake Lucerne and Mount Pilatus","Scenic rail day in the Alps"],
+   days:[["Days 1–2","Zurich arrival and Lucerne with lake cruise"],["Day 3","Mount Titlis or Pilatus"],["Days 4–5","Interlaken and Jungfraujoch"],["Day 6","Scenic train towards Zermatt"],["Day 7","Return to Zurich and departure"]]},
+  {id:"vietnam", name:"Vietnam", country:"Hanoi, Ha Long Bay, Da Nang", region:"Southeast Asia", nights:7, price:62500, best:"Oct – Apr", art:"karst", visa:["vietnam"],
+   c:{sky:"#F4E3C1",sun:"#E4553B",k1:"#5E9C8E",k2:"#2E6F69",w:"#1E5D63"},
+   hl:["Overnight or day cruise in Ha Long Bay","Hoi An lantern old town","Golden Bridge at Ba Na Hills"],
+   days:[["Days 1–2","Hanoi old quarter and water puppet show"],["Days 3–4","Ha Long Bay cruise"],["Days 5–6","Da Nang, Ba Na Hills and Hoi An"],["Day 7","Ho Chi Minh City stopover"],["Day 8","Departure"]]},
+  {id:"japan", name:"Japan", country:"Tokyo, Kyoto, Osaka", region:"East Asia", nights:7, price:159000, best:"Mar – May, Oct – Nov", art:"fuji", visa:["japan"],
+   c:{sky:"#F9E4E4",sun:"#D9392B",m:"#3D5A80",snow:"#FFFFFF",g:"#2F4B6E",p:"#F3A6B8"},
+   hl:["Shinkansen ride between cities","Fushimi Inari and Kyoto temples","Mount Fuji viewpoint day"],
+   days:[["Days 1–3","Tokyo: Shibuya, Asakusa, day trip to Mount Fuji"],["Day 4","Bullet train to Kyoto"],["Days 5–6","Kyoto temples, Arashiyama, Nara"],["Day 7","Osaka castle and street food"],["Day 8","Departure from Osaka"]]}
+];
+var MONTHS = ["Not sure yet","January","February","March","April","May","June","July","August","September","October","November","December"];
+
+/* ---- Visa guides: for Indian ordinary passport holders, checked VISA_CHECKED ---- */
+var VISA = [
+ {id:"thailand", country:"Thailand", pkg:"thailand", type:"free", typeLabel:"No visa needed",
+  stay:"Up to 30 days per visit", cost:"No visa fee", processing:"Nothing to apply for", apply:"Fill the arrival card up to 72 hours before landing", form:"Thailand Digital Arrival Card (free)",
+  summary:"Indian passport holders can enter Thailand for tourism without a visa. From 15 September 2026 the visa-free stay is 30 days, down from 60.",
+  before:["Check your passport is valid for at least 6 months from the day you land","Complete the Thailand Digital Arrival Card online within 72 hours before arrival","Save your return ticket, hotel bookings and itinerary on your phone","Carry cash for immigration checks: the Indian embassy advisory mentions THB 20,000 per person"],
+  docs:["Passport with 6+ months validity","Confirmed return or onward ticket","Hotel confirmations and a day-by-day itinerary","Cash or proof of funds"],
+  notes:["Visitors arriving on or after 15 September 2026 get up to 30 days. Anyone who entered earlier keeps the stay stamped at entry.","The immigration officer at the airport makes the final decision on entry, so keep your documents handy.","For more than 30 days you need a visa (Thailand's e-visa portal) or an extension at a local immigration office. Our packages fit comfortably inside 30 days."],
+  links:[{t:"Thailand e-Visa portal (for longer stays)",u:"https://thaievisa.go.th"}]},
+ {id:"indonesia", country:"Indonesia (Bali)", pkg:"bali", type:"arrival", typeLabel:"Visa on arrival",
+  stay:"30 days, extendable once by 30 days", cost:"IDR 500,000 (about ₹2,800) plus Bali tourist levy IDR 150,000", processing:"e-VOA usually 1–3 working days; counter VOA on the spot", apply:"e-VOA 1–2 weeks before travel, or pay at Bali airport", form:"All Indonesia arrival card (free, within 3 days before arrival)",
+  summary:"Indian tourists get a visa on arrival at Bali airport. Applying for the e-VOA online first lets you skip the payment queue.",
+  before:["Apply for the e-VOA on the official Indonesian immigration portal, or plan to pay at the airport counter","Pay the Bali tourist levy online before you fly, or on arrival","Complete the Indonesia arrival card within 3 days before landing","Save the e-VOA and levy QR codes to your phone and keep a printout","Check your passport is valid for at least 6 months"],
+  docs:["Passport bio page scan and a recent photo (for e-VOA)","Debit or credit card for the visa fee and levy","Return or onward ticket","Accommodation details"],
+  notes:["The airport VOA queue can take 30 to 90 minutes in peak season. That is the main reason to apply for the e-VOA in advance.","Use the government portal only. Look-alike sites charge extra for the same service.","Rupee amounts move with the exchange rate, so treat them as a guide."],
+  links:[{t:"Indonesia e-Visa portal",u:"https://evisa.imigrasi.go.id"}]},
+ {id:"uae", country:"UAE (Dubai)", pkg:"dubai", type:"advance", typeLabel:"Visa before travel",
+  stay:"30 or 60 days, single or multiple entry", cost:"About ₹7,500–₹9,500 for 30 days, ₹14,700–₹18,000 for 60 days, service fees included (indicative)", processing:"3–5 working days; express 1–2 days", apply:"At least 10 days before travel", form:"None",
+  summary:"Most Indian tourists need a UAE visa arranged before flying. Visa on arrival exists only for Indians holding a valid visa or residence permit from countries such as the US, UK, EU, Canada, Australia, Japan, New Zealand, South Korea or Singapore, for up to 14 days.",
+  before:["Send us your passport scan, a photo and your travel dates","We arrange the visa through an authorised UAE partner","Confirmed hotel booking and return flight are needed for the application","When the visa arrives, check that the name and passport number match exactly"],
+  docs:["Passport valid for 6+ months from arrival","Passport-size photo on a white background","Confirmed return ticket","Confirmed hotel booking in the UAE"],
+  notes:["Indian travellers cannot apply directly on a government website or at a consulate for a tourist visa. It goes through UAE airlines or authorised agents.","The visa is generally applied for no more than about 30 days before travel.","Visa fees are not refunded if an application is rejected."],
+  links:[]},
+ {id:"singapore", country:"Singapore", pkg:"singmy", type:"advance", typeLabel:"Visa before travel",
+  stay:"Up to 30 days", cost:"SGD 30 government fee plus agent charges (about ₹3,100 or more in total)", processing:"About 3–5 working days", apply:"Within 30 days before arrival", form:"SG Arrival Card (free, within 3 days before arrival)",
+  summary:"India is on Singapore's visa-required list. The visa is applied for through an authorised agent or the ICA e-Service, and the SG Arrival Card is a separate free form.",
+  before:["Send us your passport, photo and travel dates so we can apply through an authorised channel","Wait for the approved visa, then keep a copy on your phone","Submit the SG Arrival Card for every traveller, including children, within 3 days before arrival","Check your passport is valid for at least 6 months"],
+  docs:["Passport with 6+ months validity","Recent photo","Flight and hotel bookings","Proof of address if it differs from your passport"],
+  notes:["There is no visa on arrival for Indian passport holders in Singapore.","Airlines flying from India can refuse boarding if the SG Arrival Card is missing.","A visa does not guarantee entry: immigration officers make the final decision."],
+  links:[{t:"Singapore ICA: visa requirements",u:"https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa_requirements"}]},
+ {id:"malaysia", country:"Malaysia", pkg:"singmy", type:"free", typeLabel:"No visa needed (to 31 Dec 2026)",
+  stay:"Up to 30 days", cost:"No visa fee", processing:"Nothing to apply for", apply:"Fill the arrival card within 3 days before arrival", form:"Malaysia Digital Arrival Card, MDAC (free)",
+  summary:"Malaysia lets Indian citizens in for up to 30 days without a visa for tourism, currently announced until 31 December 2026.",
+  before:["Submit the MDAC online within 3 days before arrival, one for each traveller including children","Check your passport is valid for at least 6 months and has a blank page","Keep your return ticket and hotel bookings ready to show","Carry proof of funds in case immigration asks"],
+  docs:["Passport with 6+ months validity","Return or onward ticket","Accommodation confirmation","Proof of sufficient funds"],
+  notes:["The waiver is announced through 31 December 2026 by the Malaysian government. For travel after that date we re-check before you book.","Some travellers have been turned back for an incomplete arrival card, no return ticket or unclear funds.","The waiver covers tourism and social visits, not work or study."],
+  links:[{t:"Malaysian Ministry of Foreign Affairs, New Delhi",u:"https://www.kln.gov.my/web/ind_new-delhi/requirement_foreigner"},{t:"Malaysia immigration: MDAC",u:"https://imigresen-online.imi.gov.my"}]},
+ {id:"maldives", country:"Maldives", pkg:"maldives", type:"arrival", typeLabel:"Free visa on arrival",
+  stay:"30 days, extendable up to 90 days", cost:"Free", processing:"Granted at the immigration counter in Malé", apply:"Nothing in advance, but submit the traveller declaration first", form:"Maldives Traveller Declaration, IMUGA (free, within 96 hours before arrival)",
+  summary:"Every visitor, including Indians, gets a free 30-day tourist visa on arrival at Malé. You need a confirmed booking and an onward ticket.",
+  before:["Submit the online traveller declaration within 96 hours before your flight","Keep your confirmed resort or hotel booking for the whole stay ready to show","Carry your return ticket, printed and on your phone","Check your passport is valid for at least 6 months"],
+  docs:["Passport with 6+ months validity","Confirmed accommodation for the full stay","Return or onward ticket","Proof of funds, such as a credit card or prepaid resort booking"],
+  notes:["Immigration can ask for proof of funds and accommodation, so a consolidated resort voucher helps.","The declaration process has changed before. We confirm the current form when we issue your travel documents."],
+  links:[]},
+ {id:"switzerland", country:"Switzerland", pkg:"swiss", type:"advance", typeLabel:"Schengen visa before travel",
+  stay:"Up to 90 days in any 180 days, across the Schengen area", cost:"€90 adult, €45 ages 6–11, free under 6, plus VFS service fee (about ₹1,850–₹2,150)", processing:"About 15 working days; up to 45 days in peak season", apply:"Several weeks ahead; book the VFS appointment early", form:"None (biometric registration at the border under the EES)",
+  summary:"Switzerland needs a Schengen short-stay visa, applied for in person with fingerprints and a photo. Start well ahead, because appointments and peak-season processing can take weeks.",
+  before:["Send us your dates and we'll draft a day-by-day itinerary and bookings for the file","Buy Schengen travel insurance with at least €30,000 medical cover","Gather bank statements, income tax returns and employment or business proof","Book the VFS appointment and attend in person for biometrics","Track the application and collect your passport"],
+  docs:["Passport valid well beyond your return date, with blank pages","Two photos, 35 × 45 mm, white or light grey background","Travel insurance with €30,000+ cover","Flight and hotel bookings, plus day-by-day itinerary","Bank statements, ITRs and employer or business documents"],
+  notes:["Apply at the Swiss representation if Switzerland is your main destination, or where you spend the most nights.","Switzerland typically expects proof of roughly CHF 100 per day of stay.","ETIAS does not apply to Indian citizens. You need the full visa. The Entry/Exit System now records biometrics at the border in place of passport stamps."],
+  links:[{t:"Swiss State Secretariat for Migration",u:"https://www.sem.admin.ch"}]},
+ {id:"vietnam", country:"Vietnam", pkg:"vietnam", type:"advance", typeLabel:"e-Visa before travel",
+  stay:"Up to 90 days, based on the validity you choose", cost:"USD 25 single entry, USD 50 multiple entry", processing:"About 3–5 working days", apply:"At least 2 weeks before travel", form:"None",
+  summary:"Indian passport holders need a visa for Vietnam. The e-Visa is the simplest route and is applied for online.",
+  before:["Check your passport is valid for at least 6 months, with 2 blank pages","Apply on the official Vietnam e-Visa portal, or send us the details and we'll do it with you","Print the approved e-Visa and keep a copy on your phone","Make a separate application for each traveller, including infants"],
+  docs:["Passport bio page scan","Recent passport-style photo","Card for the online fee","Travel dates and first address in Vietnam"],
+  notes:["Only apply on the official portal. Look-alike sites charge extra fees.","Airlines can refuse boarding without a valid visa, so print or save it before you leave.","The e-Visa is for tourism. It is separate from visa on arrival, which needs an approval letter from an agency."],
+  links:[{t:"Vietnam e-Visa portal",u:"https://evisa.gov.vn"}]},
+ {id:"japan", country:"Japan", pkg:"japan", type:"advance", typeLabel:"Visa before travel",
+  stay:"Short-term tourist stay, as printed on the visa", cost:"₹500 government fee plus VFS service charge (about ₹2,100 in total)", processing:"About 5–10 working days", apply:"Book a VFS Japan appointment early", form:"None",
+  summary:"Indian passport holders need a visa for Japan. There is no visa on arrival and no visa-free entry. Applications go through VFS Global.",
+  before:["Prepare a day-by-day schedule of stay with hotel names","Collect bank statements and income proof","Book a VFS Japan appointment and submit your documents","If your visa is issued digitally, save the issuance notice on your phone"],
+  docs:["Passport and a 4.5 × 4.5 cm photo","Completed visa application form","Day-by-day itinerary (schedule of stay)","Bank statements and income tax or employment proof"],
+  notes:["From 1 July 2026 the Embassy of Japan lists the fee for Indian nationals at ₹500, for single or multiple entry. The transit visa has been abolished.","VFS service charges are added, and appointment availability varies by city.","Rules and processing times change, so we confirm with the Embassy or VFS before you submit."],
+  links:[{t:"Embassy of Japan in India: visa page",u:"https://www.in.emb-japan.go.jp/itpr_en/Visa.html"}]}
+];
+var TYPE_ORDER = {free:0, arrival:1, advance:2};
+var TYPE_NAME = {free:"No visa needed", arrival:"Visa on arrival", advance:"Apply before travel"};
+
+/* ---- Helpers ---- */
+var $ = function(id){ return document.getElementById(id); };
+function inr(n){ return "₹" + n.toLocaleString("en-IN"); }
+function pkgById(id){ return PACKAGES.filter(function(p){return p.id===id;})[0]; }
+function visaById(id){ return VISA.filter(function(v){return v.id===id;})[0]; }
+
+/* ---- Art generator (inline SVG fallback) + photo overlay ---- */
+function art(p){
+  var c=p.c, s='<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="240" fill="'+c.sky+'"/>';
+  if(p.art==="waves"){
+    s+='<circle cx="290" cy="95" r="38" fill="'+c.sun+'"/><path d="M50 150 Q110 92 190 150Z" fill="'+c.isl+'"/>';
+    [150,178,208].forEach(function(y,i){s+='<path d="M0 '+y+' Q50 '+(y-20)+' 100 '+y+' T200 '+y+' T300 '+y+' T400 '+y+' V240 H0Z" fill="'+c["w"+(i+1)]+'"/>';});
+  } else if(p.art==="skyline"){
+    s+='<circle cx="300" cy="120" r="44" fill="'+c.sun+'"/>';
+    p.b.forEach(function(b,i){s+='<rect x="'+b[0]+'" y="'+(212-b[2])+'" width="'+b[1]+'" height="'+b[2]+'" fill="'+(i%2?c.b1:c.b2)+'"/>';});
+    if(p.id==="dubai") s+='<path d="M214 12 L220 40 L208 40Z" fill="'+c.b1+'"/>';
+    s+='<rect y="210" width="400" height="30" fill="'+c.g+'"/>';
+  } else if(p.art==="mountains"){
+    s+='<circle cx="80" cy="60" r="26" fill="'+c.sun+'"/><path d="M-20 220 L110 80 L240 220Z" fill="'+c.m1+'"/><path d="M120 220 L262 36 L410 220Z" fill="'+c.m2+'"/><path d="M262 36 L232 80 L250 74 L262 92 L278 72 L294 82Z" fill="#fff"/><path d="M110 80 L92 106 L106 100 L114 112 L126 98 L132 104Z" fill="#fff"/><path d="M0 200 Q100 176 200 198 T400 190 V240 H0Z" fill="'+c.g+'"/>';
+  } else if(p.art==="karst"){
+    s+='<circle cx="80" cy="70" r="30" fill="'+c.sun+'"/><path d="M-10 178 C0 110 40 100 70 178Z" fill="'+c.k1+'"/><path d="M20 178 C40 60 100 40 130 178Z" fill="'+c.k2+'"/><path d="M150 178 C175 90 235 80 265 178Z" fill="'+c.k1+'"/><path d="M250 178 C275 40 340 30 380 178Z" fill="'+c.k2+'"/><rect y="176" width="400" height="64" fill="'+c.w+'"/><path d="M150 205 L200 205 L192 216 L158 216Z" fill="#F5B82E"/><path d="M175 205 L175 186 L192 205Z" fill="#fff"/>';
+  } else if(p.art==="fuji"){
+    s+='<circle cx="315" cy="66" r="28" fill="'+c.sun+'"/><path d="M30 220 L160 84 L240 84 L370 220Z" fill="'+c.m+'"/><path d="M160 84 L240 84 L258 110 L236 102 L212 118 L188 102 L142 108Z" fill="'+c.snow+'"/><rect y="200" width="400" height="40" fill="'+c.g+'"/>';
+    [[60,150],[86,170],[40,182],[350,160],[372,184],[326,178],[110,140]].forEach(function(d){s+='<circle cx="'+d[0]+'" cy="'+d[1]+'" r="5" fill="'+c.p+'"/>';});
+  }
+  return s+'</svg>';
+}
+function media(p){
+  var ph = PHOTOS[p.id];
+  return art(p) + (ph && ph.src ? '<img class="ph" src="'+ph.src+'" alt="'+ph.alt+'" loading="lazy" decoding="async">' : "");
+}
+/* if a photo file is missing, drop the <img> so the drawn artwork shows through */
+document.addEventListener("error", function(e){
+  if(e.target && e.target.tagName==="IMG" && e.target.classList.contains("ph")) e.target.remove();
+}, true);
+
+/* ---- Visa summary for cards ---- */
+function visaShort(p){
+  var list=(p.visa||[]).map(visaById).filter(Boolean);
+  var adv=list.filter(function(v){return v.type==="advance";});
+  if(adv.length) return list.length>1 ? adv.map(function(v){return v.country;}).join(", ")+" needs a visa" : "Visa needed before travel";
+  if(list.some(function(v){return v.type==="arrival";})) return "Visa on arrival";
+  return "No visa needed";
+}
+
+/* ---- Board ---- */
+$("board").innerHTML = PACKAGES.map(function(p,i){
+  return '<button class="board-row" style="--i:'+i+'" data-id="'+p.id+'">'+
+    '<span class="dest">'+p.name+'</span><span class="ctry">'+p.country+'</span><span>'+p.nights+'N</span><span class="best">'+p.best+'</span><span class="price">'+inr(p.price)+'</span></button>';
+}).join("");
+
+/* ---- Filters + cards ---- */
+var regions = ["All"].concat(PACKAGES.map(function(p){return p.region;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+var current = "All";
+function renderChips(){
+  $("chips").innerHTML = regions.map(function(r){
+    return '<button class="chip" aria-pressed="'+(r===current)+'" data-r="'+r+'">'+r+'</button>';
+  }).join("");
+}
+function renderGrid(){
+  var list = PACKAGES.filter(function(p){return current==="All"||p.region===current;});
+  $("grid").innerHTML = list.map(function(p){
+    return '<button class="card" data-id="'+p.id+'"><span class="art">'+media(p)+'</span><span class="body"><span class="ctry">'+p.country+'</span><span class="name">'+p.name+'</span><span class="meta"><span>'+p.nights+' nights</span><span>from <b>'+inr(p.price)+'</b></span></span><span class="vline">Visa: '+visaShort(p)+'</span></span></button>';
+  }).join("");
+  $("empty").hidden = list.length>0;
+}
+renderChips(); renderGrid();
+$("chips").addEventListener("click", function(e){
+  var b=e.target.closest(".chip"); if(!b) return;
+  current=b.getAttribute("data-r"); renderChips(); renderGrid();
+});
+
+/* visa quick links on home */
+$("visa-chips").innerHTML = VISA.map(function(v){ return '<a class="chip" href="#/visa/'+v.id+'">'+v.country+'</a>'; }).join("");
+
+/* ---- Detail dialog ---- */
+var dlg = $("dlg");
+function openPkg(id){
+  var p = pkgById(id); if(!p) return;
+  var ph = PHOTOS[p.id];
+  $("d-art").innerHTML = '<span class="art">'+media(p)+'</span>';
+  var vlinks = p.visa.map(visaById).map(function(v){
+    return '<a href="#/visa/'+v.id+'">'+v.country+': '+v.typeLabel+'</a>';
+  }).join("");
+  $("d-body").innerHTML =
+    '<h3 id="d-title">'+p.name+'</h3><p class="d-sub">'+p.country+' · '+p.nights+' nights / '+(p.nights+1)+' days · Best time: '+p.best+'</p>'+
+    (ph && ph.credit ? '<p class="credit">Photo: '+ph.credit+'</p>' : '')+
+    '<div class="d-cols"><div><h4>Day by day</h4><ul class="days">'+p.days.map(function(d){return '<li><b>'+d[0]+'</b><span>'+d[1]+'</span></li>';}).join("")+'</ul></div>'+
+    '<div><h4>Highlights</h4><ul class="hl">'+p.hl.map(function(h){return '<li>'+h+'</li>';}).join("")+'</ul>'+
+    '<h4>Visa and entry</h4><div class="vlinks">'+vlinks+'</div></div></div>'+
+    '<div class="d-foot"><div class="p"><small>From, per person on twin sharing</small>'+inr(p.price)+'</div><button class="btn btn-signal" data-enq="'+p.id+'">Enquire about '+p.name+'</button></div>';
+  if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+}
+function closeDlg(){ if(dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+$("d-close").addEventListener("click", closeDlg);
+dlg.addEventListener("click", function(e){ if(e.target===dlg) closeDlg(); });
+
+/* ---- Enquiry form ---- */
+$("f-dest").innerHTML = '<option value="">Not sure yet, suggest something</option>' + PACKAGES.map(function(p){return '<option value="'+p.id+'">'+p.name+' – '+p.nights+' nights</option>';}).join("");
+$("f-month").innerHTML = MONTHS.map(function(m,i){return '<option value="'+(i?m:"")+'">'+m+'</option>';}).join("");
+$("yr").textContent = new Date().getFullYear();
+
+function build(){
+  var name=$("f-name").value.trim(), phone=$("f-phone").value.trim(), n=$("f-trav").value||"2";
+  var pk = pkgById($("f-dest").value);
+  var month=$("f-month").value, note=$("f-note").value.trim();
+  var msg = "Hi "+BRAND+", I'm "+name+". I'd like an itinerary for "+(pk?pk.name:"an international trip (please suggest destinations)")+
+    " for "+n+" traveller"+(n==="1"?"":"s")+(month?", around "+month:"")+"."+(note?" "+note:"")+" You can reach me on "+phone+".";
+  return {msg:msg, ok: name && phone.replace(/\D/g,"").length>=7};
+}
+function updateLinks(){
+  var b=build();
+  $("send-wa").href = "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(b.msg);
+  $("send-mail").href = "mailto:"+EMAIL+"?subject="+encodeURIComponent("Trip enquiry from "+($("f-name").value.trim()||"website"))+"&body="+encodeURIComponent(b.msg);
+}
+["f-name","f-phone","f-dest","f-trav","f-month","f-note"].forEach(function(id){
+  $(id).addEventListener("input", updateLinks); $(id).addEventListener("change", updateLinks);
+});
+["send-wa","send-mail"].forEach(function(id){
+  $(id).addEventListener("click", function(e){
+    updateLinks();
+    if(!build().ok){
+      e.preventDefault();
+      $("err").textContent = "Add your name and a valid phone number so we can reply.";
+      ($("f-name").value.trim() ? $("f-phone") : $("f-name")).focus();
+    } else { $("err").textContent = ""; }
+  });
+});
+updateLinks();
+
+function goEnquire(pkgId){
+  if(pkgId){ $("f-dest").value = pkgId; updateLinks(); }
+  if(location.hash === "#/enquire") route(); else location.hash = "#/enquire";
+}
+
+/* ---- Visa views ---- */
+var visaFilter = "all";
+var NOTICE = '<div class="notice"><b>For Indian passport holders.</b> Entry rules were checked on '+VISA_CHECKED+'. Governments change them often, so we re-confirm with the official source before you pay for anything.</div>';
+
+function renderVisaHub(){
+  var list = VISA.filter(function(v){ return visaFilter==="all" || v.type===visaFilter; })
+                 .sort(function(a,b){ return TYPE_ORDER[a.type]-TYPE_ORDER[b.type] || a.country.localeCompare(b.country); });
+  var chips = [["all","All"],["free",TYPE_NAME.free],["arrival",TYPE_NAME.arrival],["advance",TYPE_NAME.advance]].map(function(x){
+    return '<button class="chip" data-vf="'+x[0]+'" aria-pressed="'+(visaFilter===x[0])+'">'+x[1]+'</button>';
+  }).join("");
+  var rows = list.map(function(v){
+    var p = pkgById(v.pkg);
+    return '<a class="vrow" href="#/visa/'+v.id+'"><span class="cn">'+v.country+'<small>'+(p?p.name+' package':'')+'</small></span>'+
+      '<span><span class="badge b-'+v.type+'">'+v.typeLabel+'</span></span><span>'+v.stay+'</span><span>'+v.cost+'</span><span>'+v.form+'</span></a>';
+  }).join("");
+  return '<h1>Visa and entry rules</h1><p class="lede">What you need to enter each country on our packages, and when to start. Select a country for the full checklist.</p>'+NOTICE+
+    '<div class="chips" role="group" aria-label="Filter by entry type">'+chips+'</div>'+
+    '<div class="vtable" role="list"><div class="vrow vh" aria-hidden="true"><span>Country</span><span>Entry</span><span>Stay</span><span>Cost</span><span>Arrival form</span></div>'+rows+'</div>'+
+    '<p class="stamp">Most of these countries now ask for a free online arrival form a few days before you fly. Airlines may refuse boarding without it, so we remind you before departure.</p>';
+}
+
+function renderVisaCountry(id){
+  var v = visaById(id);
+  if(!v) return '<a class="crumb" href="#/visa">‹ All visa guides</a><h1>Guide not found</h1><p class="lede">Pick a country from the list.</p>';
+  var p = pkgById(v.pkg);
+  var facts = [["Entry",v.typeLabel],["Stay allowed",v.stay],["Cost",v.cost],["Processing",v.processing],["When to apply",v.apply],["Arrival form",v.form]]
+    .map(function(f){ return '<div class="fact"><dt>'+f[0]+'</dt><dd>'+f[1]+'</dd></div>'; }).join("");
+  var checks = v.before.map(function(t,i){ return '<li><label><input type="checkbox"><span>'+t+'</span></label></li>'; }).join("");
+  var docs = v.docs.map(function(t){ return '<li>'+t+'</li>'; }).join("");
+  var notes = v.notes.map(function(t){ return '<p>'+t+'</p>'; }).join("");
+  var links = v.links.map(function(l){ return '<a class="btn btn-line" href="'+l.u+'" target="_blank" rel="noopener">'+l.t+'</a>'; }).join("");
+  return '<a class="crumb" href="#/visa">‹ All visa guides</a>'+
+    '<h1>'+v.country+' visa</h1><p><span class="badge b-'+v.type+'">'+v.typeLabel+'</span></p>'+
+    '<p class="lede" style="margin-top:.8rem">'+v.summary+'</p>'+NOTICE+
+    '<dl class="facts">'+facts+'</dl>'+
+    '<div class="vcols"><div><h2>Before you fly</h2><ul class="checks">'+checks+'</ul>'+
+    '<h2>Good to know</h2><div class="notes">'+notes+'</div></div>'+
+    '<div><h2>Documents to keep ready</h2><ul class="plain">'+docs+'</ul>'+
+    '<div class="vcta"><button class="btn btn-signal" data-enq="'+(p?p.id:"")+'">'+(p?'Plan a '+p.name+' trip':'Plan my trip')+'</button>'+links+'</div></div></div>'+
+    '<p class="stamp">Checked '+VISA_CHECKED+' for Indian ordinary passports. This is a planning guide, not legal advice. Entry is always decided by the immigration officer, and requirements can change without notice.</p>';
+}
+
+function renderVisa(id){
+  $("visa-root").innerHTML = id ? renderVisaCountry(id) : renderVisaHub();
+  var v = id && visaById(id);
+  document.title = (v ? v.country+" visa for Indians" : "Visa and entry rules") + " – MTB Holidays";
+}
+$("visa-root").addEventListener("click", function(e){
+  var f = e.target.closest("[data-vf]");
+  if(f){ visaFilter = f.getAttribute("data-vf"); renderVisa(); }
+});
+
+/* ---- Global click routing ---- */
+document.addEventListener("click", function(e){
+  var t;
+  if((t=e.target.closest(".card, .board-row"))) openPkg(t.getAttribute("data-id"));
+  else if((t=e.target.closest("[data-enq]"))){ closeDlg(); goEnquire(t.getAttribute("data-enq")); }
+  else if(e.target.closest("dialog a[href^='#/']")) closeDlg();
+});
+
+/* ---- Router: #/  #/packages  #/visa  #/visa/thailand ---- */
+var BASE_TITLE = document.title;
+var SECTIONS = {packages:1, included:1, how:1, enquire:1};
+function route(){
+  var parts = location.hash.replace(/^#\/?/,"").split("/");
+  var onVisa = parts[0]==="visa";
+  $("view-home").hidden = onVisa;
+  $("view-visa").hidden = !onVisa;
+  $("nav-visa").setAttribute("aria-current", onVisa ? "page" : "false");
+  if(onVisa){ renderVisa(parts[1]); window.scrollTo(0,0); return; }
+  document.title = BASE_TITLE;
+  var sec = SECTIONS[parts[0]] ? $(parts[0]) : null;
+  if(sec) sec.scrollIntoView(); else window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
