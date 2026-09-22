@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My TourBee – Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F1E8; --surface:#FFFFFF; --ink:#06163A; --muted:#56607A; --line:rgba(6,22,58,.15);
+  --navy:#06163A; --navy-2:#13295C; --gold:#F2A900; --gold-ink:#06163A; --focus:#1F4FBF;
+  --danger:#B23A24; --danger-bg:rgba(178,58,36,.1); --ok:#1F7A5A; --ok-bg:rgba(31,122,90,.12);
+  --font:"Outfit","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none !important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1rem;line-height:1.5}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+
+/* login */
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.login-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:2.2rem;width:min(380px,100%);box-shadow:0 20px 50px rgba(6,22,58,.08)}
+.login-card h1{font-size:1.5rem;margin:0 0 .3rem;letter-spacing:-.02em}
+.login-card p{color:var(--muted);margin:0 0 1.4rem;font-size:.95rem}
+
+/* shell */
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:10}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:1rem}
+.topbar b{font-weight:700;letter-spacing:-.01em}
+.topbar .who{color:rgba(255,255,255,.7);font-size:.9rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:1.6rem 0}
+.tab{font:inherit;font-size:.95rem;font-weight:600;padding:.6rem 1.1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+main{padding-bottom:5rem}
+
+/* form basics */
+label{display:block;font-size:.85rem;font-weight:600;margin:0 0 .3rem;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;font-size:.98rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:9px;padding:.6rem .75rem;min-height:42px}
+textarea{min-height:90px;resize:vertical;font-family:inherit}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.field{margin-bottom:1rem}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media (max-width:640px){.row2,.row3{grid-template-columns:1fr}}
+.hint{color:var(--muted);font-size:.85rem;margin:0 0 1rem}
+fieldset{border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;margin:0 0 1.2rem}
+legend{padding:0 .4rem;font-weight:700;font-size:.95rem}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:42px;padding:.55rem 1.1rem;border-radius:999px;border:1.5px solid transparent;font:inherit;font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{background:#ffbe2e}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-line{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-danger{background:transparent;border-color:var(--danger);color:var(--danger)}
+.btn-danger:hover{background:var(--danger);color:#fff}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.btnbar{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}
+
+/* cards & lists */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem}
+.panel + .panel{margin-top:1.2rem}
+.panel h2{margin:0 0 .2rem;font-size:1.25rem;letter-spacing:-.01em}
+.panel > p.sub{color:var(--muted);margin:0 0 1.2rem;font-size:.92rem}
+.itemrow{display:flex;align-items:center;gap:1rem;padding:.8rem;border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem}
+.itemrow img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex:none;background:var(--bg)}
+.itemrow .thumb-ph{width:56px;height:56px;border-radius:8px;flex:none;background:var(--navy);display:grid;place-items:center;color:#fff;font-size:.8rem;font-weight:700}
+.itemrow .meta{flex:1;min-width:0}
+.itemrow .meta b{display:block;font-size:1.02rem}
+.itemrow .meta span{color:var(--muted);font-size:.87rem}
+.itemrow .acts{display:flex;gap:.4rem;flex:none}
+.icon-btn{width:38px;height:38px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font-size:1rem;display:grid;place-items:center}
+.icon-btn:hover{border-color:var(--ink)}
+
+/* photo upload */
+.photobox{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.photobox .preview{width:90px;height:90px;border-radius:10px;object-fit:cover;background:var(--bg);flex:none;border:1px solid var(--line)}
+.photobox .preview-ph{width:90px;height:90px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.75rem;text-align:center;flex:none}
+
+.msg{border-radius:10px;padding:.8rem 1rem;font-size:.92rem;margin:1rem 0}
+.msg.ok{background:var(--ok-bg);color:var(--ok)}
+.msg.err{background:var(--danger-bg);color:var(--danger)}
+.small{font-size:.85rem;color:var(--muted)}
+details.help summary{cursor:pointer;font-weight:600;font-size:.92rem;color:var(--navy-2)}
+details.help{margin-top:.6rem}
+details.help p{color:var(--muted);font-size:.88rem}
+code{background:var(--bg);padding:.1rem .35rem;border-radius:5px;font-size:.88em}
+.checkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.4rem .8rem}
+.checkgrid label{display:flex;align-items:center;gap:.4rem;font-weight:450;color:var(--ink);font-size:.92rem}
+.checkgrid input{width:auto;min-height:0}
+dialog.confirm{border:0;border-radius:14px;padding:1.4rem;max-width:340px}
+dialog.confirm::backdrop{background:rgba(6,22,58,.5)}
+</style>
+</head>
+<body>
+
+<!-- ===== Login ===== -->
+<div class="login-screen" id="login-screen">
+  <form class="login-card" id="login-form">
+    <h1>My TourBee</h1>
+    <p>Sign in to edit packages, visa guides and site details.</p>
+    <div class="field"><label for="lu">Username</label><input id="lu" autocomplete="username"></div>
+    <div class="field"><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password"></div>
+    <p class="msg err" id="login-err" hidden></p>
+    <button class="btn btn-navy" type="submit" style="width:100%">Sign in</button>
+    <p class="small" style="margin-top:1rem">First time here? The starting username is <code>admin</code>. Ask whoever set up the site for the password, or check <code>data.json</code>.</p>
+  </form>
+</div>
+
+<!-- ===== Admin shell ===== -->
+<div id="app" hidden>
+  <div class="topbar">
+    <div class="wrap">
+      <b>My TourBee — Admin</b>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <span class="who" id="who"></span>
+        <a class="btn btn-line" href="index.html" target="_blank" style="border-color:rgba(255,255,255,.5);color:#fff;min-height:34px;padding:.4rem .9rem">View site</a>
+        <button class="btn btn-line" id="logout" style="border-color:rgba(255,255,255,.5);color:#fff;min-height:34px;padding:.4rem .9rem">Sign out</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab" data-tab="packages" aria-pressed="true">Packages</button>
+      <button class="tab" data-tab="visa" aria-pressed="false">Visa guides</button>
+      <button class="tab" data-tab="settings" aria-pressed="false">Site settings</button>
+      <button class="tab" data-tab="save" aria-pressed="false">Save & publish</button>
+    </div>
+
+    <div id="tab-packages"></div>
+    <div id="tab-visa" hidden></div>
+    <div id="tab-settings" hidden></div>
+    <div id="tab-save" hidden></div>
+  </main>
+</div>
+
+<dialog class="confirm" id="confirm-dlg">
+  <p id="confirm-text">Delete this?</p>
+  <div class="btnbar">
+    <button class="btn btn-danger" id="confirm-yes">Delete</button>
+    <button class="btn btn-line" id="confirm-no">Cancel</button>
+  </div>
+</dialog>
+
+<script>
+/* ================= Data load ================= */
+var DATA = null;
+var ART_PRESETS = {
+  waves:     {sky:"#F6D7A8",sun:"#F26B3A",w1:"#1E8A8F",w2:"#136E77",w3:"#0E545E",isl:"#2F7D54"},
+  skyline:   {sky:"#F2C48D",sun:"#E8743B",b1:"#0E3B43",b2:"#17525C",g:"#0A2A30"},
+  mountains: {sky:"#DCEBF5",sun:"#F5B82E",m1:"#6E8FA8",m2:"#3F6480",g:"#4C8B5A"},
+  karst:     {sky:"#F4E3C1",sun:"#E4553B",k1:"#5E9C8E",k2:"#2E6F69",w:"#1E5D63"},
+  fuji:      {sky:"#F9E4E4",sun:"#D9392B",m:"#3D5A80",snow:"#FFFFFF",g:"#2F4B6E",p:"#F3A6B8"}
+};
+var SKYLINE_BLOCKS = [[20,34,90],[60,26,130],[92,30,70],[128,22,175],[156,40,100],[202,24,200],[232,36,120],[274,28,80],[308,34,150],[348,30,95]];
+
+function $(id){ return document.getElementById(id); }
+function uid(prefix){ return prefix + "-" + Math.random().toString(36).slice(2,8); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+async function sha256(text){
+  var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,"0"); }).join("");
+}
+
+fetch("data.json", {cache:"no-store"}).then(function(r){
+  if(!r.ok) throw new Error("no data.json");
+  return r.json();
+}).then(function(d){
+  DATA = d;
+  setupLogin();
+}).catch(function(){
+  $("login-err").hidden = false;
+  $("login-err").textContent = "Could not load data.json. Open this admin page through a web server (e.g. the site once it's on GitHub Pages), not by double-clicking the file.";
+});
+
+/* ================= Login ================= */
+function setupLogin(){
+  var savedUser = sessionStorage.getItem("mtb_admin_user");
+  if(savedUser && savedUser === DATA.settings.adminUser){ showApp(); return; }
+  $("login-form").addEventListener("submit", async function(e){
+    e.preventDefault();
+    var u = $("lu").value.trim(), p = $("lp").value;
+    var hash = await sha256(p);
+    if(u === DATA.settings.adminUser && hash === DATA.settings.adminPassHash){
+      sessionStorage.setItem("mtb_admin_user", u);
+      showApp();
+    } else {
+      $("login-err").hidden = false;
+      $("login-err").textContent = "That username or password isn't right.";
+    }
+  });
+}
+function showApp(){
+  $("login-screen").hidden = true;
+  $("app").hidden = false;
+  $("who").textContent = "Signed in as " + DATA.settings.adminUser;
+  initTabs();
+  renderPackages();
+  renderVisa();
+  renderSettings();
+  renderSave();
+}
+$("logout").addEventListener("click", function(){
+  sessionStorage.removeItem("mtb_admin_user");
+  location.reload();
+});
+
+/* ================= Tabs ================= */
+function initTabs(){
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.addEventListener("click", function(){
+      document.querySelectorAll(".tab").forEach(function(x){ x.setAttribute("aria-pressed", x===t); });
+      ["packages","visa","settings","save"].forEach(function(id){ $("tab-"+id).hidden = ("tab-"+t.dataset.tab)!==("tab-"+id); });
+    });
+  });
+}
+
+/* ================= Confirm dialog helper ================= */
+function confirmDelete(text, onYes){
+  $("confirm-text").textContent = text;
+  var dlg = $("confirm-dlg");
+  dlg.showModal();
+  var yes = $("confirm-yes"), no = $("confirm-no");
+  function cleanup(){ yes.removeEventListener("click",go); no.removeEventListener("click",cancel); dlg.close(); }
+  function go(){ cleanup(); onYes(); }
+  function cancel(){ cleanup(); }
+  yes.addEventListener("click",go); no.addEventListener("click",cancel);
+}
+
+/* ================= PACKAGES tab ================= */
+function renderPackages(){
+  var host = $("tab-packages");
+  host.innerHTML =
+    '<div class="panel"><h2>Packages</h2><p class="sub">The trips shown on the home page and departure board.</p>' +
+    '<div id="pkg-list"></div>' +
+    '<div class="btnbar"><button class="btn btn-gold" id="pkg-add">+ Add a package</button></div></div>' +
+    '<div class="panel" id="pkg-editor" hidden></div>';
+  drawPkgList();
+  $("pkg-add").addEventListener("click", function(){ openPkgEditor(null); });
+}
+function drawPkgList(){
+  $("pkg-list").innerHTML = DATA.packages.map(function(p){
+    var ph = p.photo && p.photo.src;
+    return '<div class="itemrow">' +
+      (ph ? '<img src="'+esc(ph)+'" alt="">' : '<div class="thumb-ph">'+esc((p.art||"").slice(0,4)||"art")+'</div>') +
+      '<div class="meta"><b>'+esc(p.name)+'</b><span>'+esc(p.country)+' · '+esc(p.nights)+' nights · ₹'+Number(p.price||0).toLocaleString("en-IN")+'</span></div>' +
+      '<div class="acts"><button class="icon-btn" data-edit="'+esc(p.id)+'" title="Edit" aria-label="Edit '+esc(p.name)+'">✏️</button>' +
+      '<button class="icon-btn" data-del="'+esc(p.id)+'" title="Delete" aria-label="Delete '+esc(p.name)+'">🗑️</button></div></div>';
+  }).join("") || '<p class="sub">No packages yet.</p>';
+  host_pkg_events();
+}
+function host_pkg_events(){
+  $("pkg-list").querySelectorAll("[data-edit]").forEach(function(b){
+    b.addEventListener("click", function(){ openPkgEditor(b.getAttribute("data-edit")); });
+  });
+  $("pkg-list").querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-del"); var p = DATA.packages.find(function(x){return x.id===id;});
+      confirmDelete('Delete the "'+p.name+'" package? This cannot be undone until you re-add it.', function(){
+        DATA.packages = DATA.packages.filter(function(x){ return x.id!==id; });
+        drawPkgList();
+      });
+    });
+  });
+}
+function openPkgEditor(id){
+  var isNew = !id;
+  var p = isNew ? {id:"", name:"", country:"", region:"", nights:5, price:0, best:"", art:"waves", c:ART_PRESETS.waves, b:null, visa:[], hl:["",""], days:[["Day 1",""]], photo:{src:"",alt:"",credit:""}} : JSON.parse(JSON.stringify(DATA.packages.find(function(x){return x.id===id;})));
+  var editor = $("pkg-editor");
+  editor.hidden = false;
+  editor.innerHTML =
+    '<h2>'+(isNew?"Add a package":"Edit package")+'</h2>' +
+    '<div class="photobox">' +
+      (p.photo && p.photo.src ? '<img class="preview" id="pv-photo" src="'+esc(p.photo.src)+'">' : '<div class="preview-ph" id="pv-photo">No photo</div>') +
+      '<div><input type="file" id="f-photo" accept="image/*"><p class="hint small">Any photo, any size — it is resized automatically. Stored inside data.json, no separate upload needed.</p></div>' +
+    '</div>' +
+    '<div class="row2"><div class="field"><label>Destination name</label><input id="f-name" value="'+esc(p.name)+'"></div>' +
+    '<div class="field"><label>Country / area shown under the name</label><input id="f-country" value="'+esc(p.country)+'"></div></div>' +
+    '<div class="row3"><div class="field"><label>Region (used for filters)</label><input id="f-region" value="'+esc(p.region)+'" placeholder="e.g. Southeast Asia"></div>' +
+    '<div class="field"><label>Nights</label><input id="f-nights" type="number" min="1" value="'+esc(p.nights)+'"></div>' +
+    '<div class="field"><label>Price from (₹ per person)</label><input id="f-price" type="number" min="0" value="'+esc(p.price)+'"></div></div>' +
+    '<div class="row2"><div class="field"><label>Best time to go</label><input id="f-best" value="'+esc(p.best)+'" placeholder="e.g. Nov – Mar"></div>' +
+    '<div class="field"><label>Artwork style (shown if no photo)</label><select id="f-art">' +
+      Object.keys(ART_PRESETS).map(function(a){ return '<option value="'+a+'"'+(a===p.art?" selected":"")+'>'+a+'</option>'; }).join("") + '</select></div></div>' +
+    '<div class="field"><label>Highlights (one per line)</label><textarea id="f-hl">'+esc((p.hl||[]).join("\n"))+'</textarea></div>' +
+    '<div class="field"><label>Day-by-day plan (one per line, as: Day label | What happens)</label><textarea id="f-days" style="min-height:130px">'+esc((p.days||[]).map(function(d){return d[0]+" | "+d[1];}).join("\n"))+'</textarea></div>' +
+    '<div class="field"><label>Which visa guides apply to this package?</label><div class="checkgrid" id="f-visa">' +
+      DATA.visa.map(function(v){ return '<label><input type="checkbox" value="'+esc(v.id)+'"'+((p.visa||[]).indexOf(v.id)>=0?" checked":"")+'> '+esc(v.country)+'</label>'; }).join("") + '</div></div>' +
+    '<p class="msg err" id="pkg-err" hidden></p>' +
+    '<div class="btnbar"><button class="btn btn-gold" id="pkg-save">Save package</button><button class="btn btn-line" id="pkg-cancel">Cancel</button></div>';
+
+  var newPhotoDataUrl = null;
+  $("f-photo").addEventListener("change", function(e){
+    var file = e.target.files[0]; if(!file) return;
+    var img = new Image();
+    var reader = new FileReader();
+    reader.onload = function(){
+      img.onload = function(){
+        var maxW = 900, scale = Math.min(1, maxW/img.width);
+        var cv = document.createElement("canvas");
+        cv.width = Math.round(img.width*scale); cv.height = Math.round(img.height*scale);
+        cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);
+        newPhotoDataUrl = cv.toDataURL("image/jpeg", 0.82);
+        var pv = $("pv-photo");
+        var img2 = document.createElement("img"); img2.className="preview"; img2.id="pv-photo"; img2.src=newPhotoDataUrl;
+        pv.replaceWith(img2);
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  $("pkg-cancel").addEventListener("click", function(){ editor.hidden = true; editor.innerHTML=""; });
+  $("pkg-save").addEventListener("click", function(){
+    var name = $("f-name").value.trim();
+    if(!name){ $("pkg-err").hidden=false; $("pkg-err").textContent="Give the package a name."; return; }
+    var newId = isNew ? name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"") || uid("pkg") : p.id;
+    if(isNew && DATA.packages.some(function(x){return x.id===newId;})) newId = newId + "-" + Math.random().toString(36).slice(2,5);
+    var art = $("f-art").value;
+    var days = $("f-days").value.split("\n").map(function(l){ l=l.trim(); if(!l) return null; var i=l.indexOf("|"); return i<0 ? [l,""] : [l.slice(0,i).trim(), l.slice(i+1).trim()]; }).filter(Boolean);
+    var hl = $("f-hl").value.split("\n").map(function(l){return l.trim();}).filter(Boolean);
+    var visaIds = Array.from($("f-visa").querySelectorAll("input:checked")).map(function(i){return i.value;});
+    var obj = {
+      id:newId, name:name, country:$("f-country").value.trim(), region:$("f-region").value.trim(),
+      nights:Number($("f-nights").value)||1, price:Number($("f-price").value)||0, best:$("f-best").value.trim(),
+      art:art, c:ART_PRESETS[art], visa:visaIds, hl:hl, days:days,
+      photo:{ src: newPhotoDataUrl || (p.photo?p.photo.src:""), alt: name, credit: (p.photo?p.photo.credit:"")||"" }
+    };
+    if(art==="skyline") obj.b = SKYLINE_BLOCKS;
+    if(isNew){ DATA.packages.push(obj); } else { var idx=DATA.packages.findIndex(function(x){return x.id===p.id;}); DATA.packages[idx]=obj; }
+    editor.hidden = true; editor.innerHTML="";
+    drawPkgList();
+    markDirty();
+  });
+}
+
+/* ================= VISA tab ================= */
+function renderVisa(){
+  var host = $("tab-visa");
+  host.innerHTML =
+    '<div class="panel"><h2>Visa guides</h2><p class="sub">One guide per country. Package pages link to these automatically.</p>' +
+    '<div id="visa-list"></div>' +
+    '<div class="btnbar"><button class="btn btn-gold" id="visa-add">+ Add a visa guide</button></div></div>' +
+    '<div class="panel" id="visa-editor" hidden></div>';
+  drawVisaList();
+  $("visa-add").addEventListener("click", function(){ openVisaEditor(null); });
+}
+function drawVisaList(){
+  $("visa-list").innerHTML = DATA.visa.map(function(v){
+    return '<div class="itemrow"><div class="thumb-ph">'+esc(v.type.slice(0,3))+'</div>' +
+      '<div class="meta"><b>'+esc(v.country)+'</b><span>'+esc(v.typeLabel)+'</span></div>' +
+      '<div class="acts"><button class="icon-btn" data-edit="'+esc(v.id)+'" title="Edit">✏️</button>' +
+      '<button class="icon-btn" data-del="'+esc(v.id)+'" title="Delete">🗑️</button></div></div>';
+  }).join("") || '<p class="sub">No visa guides yet.</p>';
+  $("visa-list").querySelectorAll("[data-edit]").forEach(function(b){ b.addEventListener("click", function(){ openVisaEditor(b.getAttribute("data-edit")); }); });
+  $("visa-list").querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id=b.getAttribute("data-del"); var v=DATA.visa.find(function(x){return x.id===id;});
+      confirmDelete('Delete the "'+v.country+'" visa guide?', function(){ DATA.visa = DATA.visa.filter(function(x){return x.id!==id;}); drawVisaList(); markDirty(); });
+    });
+  });
+}
+function openVisaEditor(id){
+  var isNew = !id;
+  var v = isNew ? {id:"",country:"",pkg:"",type:"advance",typeLabel:"",stay:"",cost:"",processing:"",apply:"",form:"",summary:"",before:[""],docs:[""],notes:[""],links:[]} : JSON.parse(JSON.stringify(DATA.visa.find(function(x){return x.id===id;})));
+  var editor = $("visa-editor");
+  editor.hidden = false;
+  editor.innerHTML =
+    '<h2>'+(isNew?"Add a visa guide":"Edit visa guide")+'</h2>' +
+    '<div class="row2"><div class="field"><label>Country name</label><input id="v-country" value="'+esc(v.country)+'"></div>' +
+    '<div class="field"><label>Linked package</label><select id="v-pkg"><option value="">— none —</option>' +
+      DATA.packages.map(function(p){ return '<option value="'+esc(p.id)+'"'+(p.id===v.pkg?" selected":"")+'>'+esc(p.name)+'</option>'; }).join("") + '</select></div></div>' +
+    '<div class="row2"><div class="field"><label>Entry type</label><select id="v-type">' +
+      ['free','arrival','advance'].map(function(t){ return '<option value="'+t+'"'+(t===v.type?" selected":"")+'>'+({free:"No visa needed",arrival:"Visa on arrival",advance:"Apply before travel"}[t])+'</option>'; }).join("") + '</select></div>' +
+    '<div class="field"><label>Short label shown on badges</label><input id="v-typelabel" value="'+esc(v.typeLabel)+'" placeholder="e.g. Visa on arrival"></div></div>' +
+    '<div class="row3"><div class="field"><label>Stay allowed</label><input id="v-stay" value="'+esc(v.stay)+'"></div>' +
+    '<div class="field"><label>Cost</label><input id="v-cost" value="'+esc(v.cost)+'"></div>' +
+    '<div class="field"><label>Processing time</label><input id="v-processing" value="'+esc(v.processing)+'"></div></div>' +
+    '<div class="row2"><div class="field"><label>When to apply</label><input id="v-apply" value="'+esc(v.apply)+'"></div>' +
+    '<div class="field"><label>Arrival form needed</label><input id="v-form" value="'+esc(v.form)+'"></div></div>' +
+    '<div class="field"><label>Summary (shown at the top of the guide)</label><textarea id="v-summary">'+esc(v.summary)+'</textarea></div>' +
+    '<div class="field"><label>Before you fly — checklist (one per line)</label><textarea id="v-before">'+esc((v.before||[]).join("\n"))+'</textarea></div>' +
+    '<div class="field"><label>Documents to keep ready (one per line)</label><textarea id="v-docs">'+esc((v.docs||[]).join("\n"))+'</textarea></div>' +
+    '<div class="field"><label>Good to know — notes (one per line, each becomes a paragraph)</label><textarea id="v-notes">'+esc((v.notes||[]).join("\n"))+'</textarea></div>' +
+    '<div class="field"><label>Official links (one per line, as: Link text | https://url)</label><textarea id="v-links">'+esc((v.links||[]).map(function(l){return l.t+" | "+l.u;}).join("\n"))+'</textarea></div>' +
+    '<p class="msg err" id="visa-err" hidden></p>' +
+    '<div class="btnbar"><button class="btn btn-gold" id="visa-save">Save visa guide</button><button class="btn btn-line" id="visa-cancel">Cancel</button></div>';
+
+  $("visa-cancel").addEventListener("click", function(){ editor.hidden=true; editor.innerHTML=""; });
+  $("visa-save").addEventListener("click", function(){
+    var country = $("v-country").value.trim();
+    if(!country){ $("visa-err").hidden=false; $("visa-err").textContent="Give the guide a country name."; return; }
+    var newId = isNew ? country.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"") || uid("visa") : v.id;
+    if(isNew && DATA.visa.some(function(x){return x.id===newId;})) newId = newId + "-" + Math.random().toString(36).slice(2,5);
+    var obj = {
+      id:newId, country:country, pkg:$("v-pkg").value, type:$("v-type").value, typeLabel:$("v-typelabel").value.trim(),
+      stay:$("v-stay").value.trim(), cost:$("v-cost").value.trim(), processing:$("v-processing").value.trim(),
+      apply:$("v-apply").value.trim(), form:$("v-form").value.trim(), summary:$("v-summary").value.trim(),
+      before:$("v-before").value.split("\n").map(function(l){return l.trim();}).filter(Boolean),
+      docs:$("v-docs").value.split("\n").map(function(l){return l.trim();}).filter(Boolean),
+      notes:$("v-notes").value.split("\n").map(function(l){return l.trim();}).filter(Boolean),
+      links:$("v-links").value.split("\n").map(function(l){ l=l.trim(); if(!l) return null; var i=l.indexOf("|"); return i<0?null:{t:l.slice(0,i).trim(), u:l.slice(i+1).trim()}; }).filter(Boolean)
+    };
+    if(isNew){ DATA.visa.push(obj); } else { var idx=DATA.visa.findIndex(function(x){return x.id===v.id;}); DATA.visa[idx]=obj; }
+    editor.hidden=true; editor.innerHTML="";
+    drawVisaList(); renderPackages();
+    markDirty();
+  });
+}
+
+/* ================= SETTINGS tab ================= */
+function renderSettings(){
+  var s = DATA.settings;
+  var host = $("tab-settings");
+  host.innerHTML =
+    '<div class="panel"><h2>Contact & brand</h2><p class="sub">These feed the WhatsApp and email buttons on the site.</p>' +
+    '<div class="row2"><div class="field"><label>Brand name</label><input id="s-brand" value="'+esc(s.brand)+'"></div>' +
+    '<div class="field"><label>Visa info last checked</label><input id="s-checked" value="'+esc(s.visaChecked)+'"></div></div>' +
+    '<div class="row2"><div class="field"><label>WhatsApp number (country code + number, digits only)</label><input id="s-wa" value="'+esc(s.whatsapp)+'"></div>' +
+    '<div class="field"><label>Contact email</label><input id="s-email" type="email" value="'+esc(s.email)+'"></div></div>' +
+    '<div class="btnbar"><button class="btn btn-gold" id="s-save">Save details</button></div>' +
+    '<p class="msg ok" id="s-ok" hidden>Saved. Remember to publish from the Save & publish tab.</p></div>' +
+
+    '<div class="panel"><h2>Change password</h2><p class="sub">Signed in as <b>'+esc(s.adminUser)+'</b>.</p>' +
+    '<div class="row2"><div class="field"><label>New username (optional)</label><input id="s-user" placeholder="'+esc(s.adminUser)+'"></div>' +
+    '<div class="field"><label>New password</label><input id="s-pass" type="password" placeholder="Leave blank to keep the current password"></div></div>' +
+    '<div class="btnbar"><button class="btn btn-navy" id="s-pass-save">Update login</button></div>' +
+    '<p class="msg ok" id="p-ok" hidden>Login updated. Sign out and back in to confirm it, and publish your changes.</p>' +
+    '<p class="msg err" id="p-err" hidden></p></div>';
+
+  $("s-save").addEventListener("click", function(){
+    s.brand = $("s-brand").value.trim() || s.brand;
+    s.visaChecked = $("s-checked").value.trim();
+    s.whatsapp = $("s-wa").value.replace(/\D/g,"");
+    s.email = $("s-email").value.trim();
+    $("s-ok").hidden = false;
+    markDirty();
+  });
+  $("s-pass-save").addEventListener("click", async function(){
+    var newUser = $("s-user").value.trim();
+    var newPass = $("s-pass").value;
+    if(!newPass){ $("p-err").hidden=false; $("p-err").textContent="Enter a new password, or leave both fields blank."; return; }
+    if(newPass.length < 6){ $("p-err").hidden=false; $("p-err").textContent="Use at least 6 characters."; return; }
+    $("p-err").hidden = true;
+    if(newUser) s.adminUser = newUser;
+    s.adminPassHash = await sha256(newPass);
+    $("p-ok").hidden = false;
+    $("s-pass").value = "";
+    markDirty();
+  });
+}
+
+/* ================= SAVE & PUBLISH tab ================= */
+function renderSave(){
+  var host = $("tab-save");
+  var gh = JSON.parse(localStorage.getItem("mtb_gh_cfg") || "{}");
+  host.innerHTML =
+    '<div class="panel"><h2>Download the updated file</h2>' +
+    '<p class="sub">Always works. Downloads <code>data.json</code> — upload it to your GitHub repo to replace the existing one (Add file → Upload files → Commit).</p>' +
+    '<div class="btnbar"><button class="btn btn-gold" id="dl-json">Download data.json</button></div></div>' +
+
+    '<div class="panel"><h2>Or publish straight to GitHub</h2>' +
+    '<p class="sub">Commits <code>data.json</code> directly to your repository. Needs a GitHub personal access token — this stays only in your browser and is never sent anywhere except GitHub.</p>' +
+    '<div class="row3"><div class="field"><label>Repo owner</label><input id="gh-owner" value="'+esc(gh.owner||"kumarbluebill-sudo")+'"></div>' +
+    '<div class="field"><label>Repo name</label><input id="gh-repo" value="'+esc(gh.repo||"MTB")+'"></div>' +
+    '<div class="field"><label>Branch</label><input id="gh-branch" value="'+esc(gh.branch||"main")+'"></div></div>' +
+    '<div class="field"><label>Personal access token</label><input id="gh-token" type="password" placeholder="ghp_… (fine-grained token, Contents: read and write, on this repo only)" value="'+esc(gh.token||"")+'"></div>' +
+    '<details class="help"><summary>How do I get a token?</summary><p>On GitHub: Settings → Developer settings → Fine-grained tokens → Generate new token. Set "Repository access" to this repo only, and give it Contents: Read and write permission. Paste the token above — it is saved only in this browser, so you will need to enter it again on another device.</p></details>' +
+    '<div class="btnbar"><button class="btn btn-navy" id="gh-save">Publish to GitHub</button></div>' +
+    '<p class="msg ok" id="gh-ok" hidden></p><p class="msg err" id="gh-err" hidden></p></div>';
+
+  $("dl-json").addEventListener("click", function(){
+    var blob = new Blob([JSON.stringify(DATA, null, 1)], {type:"application/json"});
+    var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "data.json"; a.click();
+  });
+
+  $("gh-save").addEventListener("click", async function(){
+    var owner = $("gh-owner").value.trim(), repo = $("gh-repo").value.trim(), branch = $("gh-branch").value.trim() || "main", token = $("gh-token").value.trim();
+    var okEl = $("gh-ok"), errEl = $("gh-err");
+    okEl.hidden = true; errEl.hidden = true;
+    if(!owner || !repo || !token){ errEl.hidden=false; errEl.textContent = "Fill in the repo owner, repo name and token."; return; }
+    localStorage.setItem("mtb_gh_cfg", JSON.stringify({owner:owner, repo:repo, branch:branch, token:token}));
+    var btn = $("gh-save"); btn.disabled = true; btn.textContent = "Publishing…";
+    try{
+      var api = "https://api.github.com/repos/"+owner+"/"+repo+"/contents/data.json";
+      var getRes = await fetch(api + "?ref=" + encodeURIComponent(branch), { headers:{ Authorization:"Bearer "+token, Accept:"application/vnd.github+json" }});
+      var sha = null;
+      if(getRes.status === 200){ var cur = await getRes.json(); sha = cur.sha; }
+      else if(getRes.status !== 404){ throw new Error("Could not read the current file (status "+getRes.status+"). Check the repo name and token."); }
+      var content = btoa(unescape(encodeURIComponent(JSON.stringify(DATA, null, 1))));
+      var putRes = await fetch(api, { method:"PUT", headers:{ Authorization:"Bearer "+token, Accept:"application/vnd.github+json", "Content-Type":"application/json" },
+        body: JSON.stringify({ message:"Update site content from admin panel", content:content, sha:sha, branch:branch }) });
+      if(!putRes.ok){ var err = await putRes.json().catch(function(){return {};}); throw new Error(err.message || ("GitHub returned status "+putRes.status)); }
+      okEl.hidden = false; okEl.textContent = "Published. Your live site will update within a minute or two.";
+      dirty = false;
+    } catch(ex){
+      errEl.hidden = false; errEl.textContent = ex.message || "Something went wrong talking to GitHub.";
+    } finally {
+      btn.disabled = false; btn.textContent = "Publish to GitHub";
+    }
+  });
+}
+
+var dirty = false;
+function markDirty(){ dirty = true; }
+window.addEventListener("beforeunload", function(e){ if(dirty){ e.preventDefault(); e.returnValue = ""; } });
+</script>
+</body>
+</html>

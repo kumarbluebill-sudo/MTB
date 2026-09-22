@@ -1,0 +1,842 @@
+{
+ "settings": {
+  "brand": "My TourBee",
+  "whatsapp": "919442294888",
+  "email": "mytourbee@gmail.com",
+  "visaChecked": "21 September 2026",
+  "adminUser": "admin",
+  "adminPassHash": "790acdc5a3ce992654b1321e43be72ab52d65fdeb480d57c0e2bef12f105fb82"
+ },
+ "packages": [
+  {
+   "photo": {
+    "src": "images/bali.jpg",
+    "alt": "Rice terraces near Ubud, Bali",
+    "credit": ""
+   },
+   "id": "bali",
+   "name": "Bali",
+   "country": "Indonesia",
+   "region": "Southeast Asia",
+   "nights": 6,
+   "price": 54900,
+   "best": "Apr – Oct",
+   "art": "waves",
+   "visa": [
+    "indonesia"
+   ],
+   "c": {
+    "sky": "#F6D7A8",
+    "sun": "#F26B3A",
+    "w1": "#1E8A8F",
+    "w2": "#136E77",
+    "w3": "#0E545E",
+    "isl": "#2F7D54"
+   },
+   "hl": [
+    "Ubud rice terraces and temple visits",
+    "Beach days in Seminyak and Nusa Dua",
+    "Sunset at Uluwatu"
+   ],
+   "days": [
+    [
+     "Days 1–2",
+     "Arrive in Denpasar and settle into a beach hotel"
+    ],
+    [
+     "Days 3–4",
+     "Ubud: rice terraces, monkey forest, cooking class"
+    ],
+    [
+     "Day 5",
+     "Kintamani volcano and coffee plantation drive"
+    ],
+    [
+     "Day 6",
+     "Free day for spa, shopping or water sports"
+    ],
+    [
+     "Day 7",
+     "Airport transfer and departure"
+    ]
+   ]
+  },
+  {
+   "photo": {
+    "src": "images/dubai.jpg",
+    "alt": "Dubai skyline with Burj Khalifa at dusk",
+    "credit": ""
+   },
+   "id": "dubai",
+   "name": "Dubai",
+   "country": "United Arab Emirates",
+   "region": "Middle East",
+   "nights": 5,
+   "price": 49900,
+   "best": "Nov – Mar",
+   "art": "skyline",
+   "visa": [
+    "uae"
+   ],
+   "c": {
+    "sky": "#F2C48D",
+    "sun": "#E8743B",
+    "b1": "#0E3B43",
+    "b2": "#17525C",
+    "g": "#0A2A30"
+   },
+   "b": [
+    [
+     20,
+     34,
+     90
+    ],
+    [
+     60,
+     26,
+     130
+    ],
+    [
+     92,
+     30,
+     70
+    ],
+    [
+     128,
+     22,
+     175
+    ],
+    [
+     156,
+     40,
+     100
+    ],
+    [
+     202,
+     24,
+     200
+    ],
+    [
+     232,
+     36,
+     120
+    ],
+    [
+     274,
+     28,
+     80
+    ],
+    [
+     308,
+     34,
+     150
+    ],
+    [
+     348,
+     30,
+     95
+    ]
+   ],
+   "hl": [
+    "Burj Khalifa observation deck",
+    "Desert safari with dinner",
+    "Dhow cruise at Dubai Marina"
+   ],
+   "days": [
+    [
+     "Day 1",
+     "Arrive, hotel check-in and Dubai Mall"
+    ],
+    [
+     "Day 2",
+     "City tour: Jumeirah, Museum of the Future, Burj Khalifa"
+    ],
+    [
+     "Day 3",
+     "Desert safari with camp dinner"
+    ],
+    [
+     "Day 4",
+     "Abu Dhabi day trip with mosque visit"
+    ],
+    [
+     "Day 5",
+     "Marina dhow cruise, then airport transfer"
+    ]
+   ]
+  },
+  {
+   "photo": {
+    "src": "images/thailand.jpg",
+    "alt": "Longtail boats off a Phuket beach",
+    "credit": ""
+   },
+   "id": "thailand",
+   "name": "Thailand",
+   "country": "Bangkok and Phuket",
+   "region": "Southeast Asia",
+   "nights": 6,
+   "price": 39900,
+   "best": "Nov – Apr",
+   "art": "waves",
+   "visa": [
+    "thailand"
+   ],
+   "c": {
+    "sky": "#FBD9B5",
+    "sun": "#E4553B",
+    "w1": "#2AA5A0",
+    "w2": "#1B8A8C",
+    "w3": "#106B72",
+    "isl": "#3E7F5A"
+   },
+   "hl": [
+    "Grand Palace and floating market in Bangkok",
+    "Phi Phi Islands by speedboat",
+    "Old Phuket town evening walk"
+   ],
+   "days": [
+    [
+     "Days 1–3",
+     "Bangkok: temples, river cruise, street food evening"
+    ],
+    [
+     "Day 4",
+     "Fly to Phuket and check in by the beach"
+    ],
+    [
+     "Day 5",
+     "Phi Phi Islands day trip"
+    ],
+    [
+     "Day 6",
+     "Free day, optional James Bond Island tour"
+    ],
+    [
+     "Day 7",
+     "Transfer and departure"
+    ]
+   ]
+  },
+  {
+   "photo": {
+    "src": "images/singmy.jpg",
+    "alt": "Marina Bay skyline, Singapore",
+    "credit": ""
+   },
+   "id": "singmy",
+   "name": "Singapore & Malaysia",
+   "country": "Singapore and Kuala Lumpur",
+   "region": "Southeast Asia",
+   "nights": 6,
+   "price": 64900,
+   "best": "Feb – Sep",
+   "art": "skyline",
+   "visa": [
+    "singapore",
+    "malaysia"
+   ],
+   "c": {
+    "sky": "#CDE8E4",
+    "sun": "#F5B82E",
+    "b1": "#1B5B66",
+    "b2": "#2E8A94",
+    "g": "#0E3B43"
+   },
+   "b": [
+    [
+     16,
+     40,
+     70
+    ],
+    [
+     62,
+     26,
+     120
+    ],
+    [
+     94,
+     34,
+     90
+    ],
+    [
+     134,
+     30,
+     150
+    ],
+    [
+     170,
+     44,
+     110
+    ],
+    [
+     220,
+     28,
+     170
+    ],
+    [
+     252,
+     38,
+     100
+    ],
+    [
+     296,
+     30,
+     140
+    ],
+    [
+     332,
+     40,
+     80
+    ]
+   ],
+   "hl": [
+    "Gardens by the Bay light show",
+    "Sentosa island day",
+    "Petronas Towers and Batu Caves"
+   ],
+   "days": [
+    [
+     "Days 1–3",
+     "Singapore: Marina Bay, Gardens by the Bay, Sentosa"
+    ],
+    [
+     "Day 4",
+     "Travel to Kuala Lumpur"
+    ],
+    [
+     "Days 5–6",
+     "KL city tour, Batu Caves, Petronas Towers"
+    ],
+    [
+     "Day 7",
+     "Airport transfer and departure"
+    ]
+   ]
+  },
+  {
+   "photo": {
+    "src": "images/maldives.jpg",
+    "alt": "Overwater villas in the Maldives",
+    "credit": ""
+   },
+   "id": "maldives",
+   "name": "Maldives",
+   "country": "Maldives",
+   "region": "Indian Ocean",
+   "nights": 4,
+   "price": 79900,
+   "best": "Nov – Apr",
+   "art": "waves",
+   "visa": [
+    "maldives"
+   ],
+   "c": {
+    "sky": "#BFE6EA",
+    "sun": "#FFE08A",
+    "w1": "#4CC3C9",
+    "w2": "#2AA1AB",
+    "w3": "#137E8A",
+    "isl": "#E8D7A6"
+   },
+   "hl": [
+    "Overwater villa or beach villa stay",
+    "Snorkelling on the house reef",
+    "Sandbank sunset cruise"
+   ],
+   "days": [
+    [
+     "Day 1",
+     "Arrive at Malé and take a speedboat or seaplane to the resort"
+    ],
+    [
+     "Days 2–4",
+     "Snorkelling, spa, sunset cruise, optional dolphin trip"
+    ],
+    [
+     "Day 5",
+     "Transfer back to Malé and depart"
+    ]
+   ]
+  },
+  {
+   "photo": {
+    "src": "images/swiss.jpg",
+    "alt": "Alpine lake and mountains in Switzerland",
+    "credit": ""
+   },
+   "id": "swiss",
+   "name": "Switzerland",
+   "country": "Switzerland",
+   "region": "Europe",
+   "nights": 7,
+   "price": 189000,
+   "best": "May – Sep",
+   "art": "mountains",
+   "visa": [
+    "switzerland"
+   ],
+   "c": {
+    "sky": "#DCEBF5",
+    "sun": "#F5B82E",
+    "m1": "#6E8FA8",
+    "m2": "#3F6480",
+    "g": "#4C8B5A"
+   },
+   "hl": [
+    "Jungfraujoch, the top of Europe",
+    "Lake Lucerne and Mount Pilatus",
+    "Scenic rail day in the Alps"
+   ],
+   "days": [
+    [
+     "Days 1–2",
+     "Zurich arrival and Lucerne with lake cruise"
+    ],
+    [
+     "Day 3",
+     "Mount Titlis or Pilatus"
+    ],
+    [
+     "Days 4–5",
+     "Interlaken and Jungfraujoch"
+    ],
+    [
+     "Day 6",
+     "Scenic train towards Zermatt"
+    ],
+    [
+     "Day 7",
+     "Return to Zurich and departure"
+    ]
+   ]
+  },
+  {
+   "photo": {
+    "src": "images/vietnam.jpg",
+    "alt": "Limestone islands in Ha Long Bay",
+    "credit": ""
+   },
+   "id": "vietnam",
+   "name": "Vietnam",
+   "country": "Hanoi, Ha Long Bay, Da Nang",
+   "region": "Southeast Asia",
+   "nights": 7,
+   "price": 62500,
+   "best": "Oct – Apr",
+   "art": "karst",
+   "visa": [
+    "vietnam"
+   ],
+   "c": {
+    "sky": "#F4E3C1",
+    "sun": "#E4553B",
+    "k1": "#5E9C8E",
+    "k2": "#2E6F69",
+    "w": "#1E5D63"
+   },
+   "hl": [
+    "Overnight or day cruise in Ha Long Bay",
+    "Hoi An lantern old town",
+    "Golden Bridge at Ba Na Hills"
+   ],
+   "days": [
+    [
+     "Days 1–2",
+     "Hanoi old quarter and water puppet show"
+    ],
+    [
+     "Days 3–4",
+     "Ha Long Bay cruise"
+    ],
+    [
+     "Days 5–6",
+     "Da Nang, Ba Na Hills and Hoi An"
+    ],
+    [
+     "Day 7",
+     "Ho Chi Minh City stopover"
+    ],
+    [
+     "Day 8",
+     "Departure"
+    ]
+   ]
+  },
+  {
+   "photo": {
+    "src": "images/japan.jpg",
+    "alt": "Mount Fuji with cherry blossoms",
+    "credit": ""
+   },
+   "id": "japan",
+   "name": "Japan",
+   "country": "Tokyo, Kyoto, Osaka",
+   "region": "East Asia",
+   "nights": 7,
+   "price": 159000,
+   "best": "Mar – May, Oct – Nov",
+   "art": "fuji",
+   "visa": [
+    "japan"
+   ],
+   "c": {
+    "sky": "#F9E4E4",
+    "sun": "#D9392B",
+    "m": "#3D5A80",
+    "snow": "#FFFFFF",
+    "g": "#2F4B6E",
+    "p": "#F3A6B8"
+   },
+   "hl": [
+    "Shinkansen ride between cities",
+    "Fushimi Inari and Kyoto temples",
+    "Mount Fuji viewpoint day"
+   ],
+   "days": [
+    [
+     "Days 1–3",
+     "Tokyo: Shibuya, Asakusa, day trip to Mount Fuji"
+    ],
+    [
+     "Day 4",
+     "Bullet train to Kyoto"
+    ],
+    [
+     "Days 5–6",
+     "Kyoto temples, Arashiyama, Nara"
+    ],
+    [
+     "Day 7",
+     "Osaka castle and street food"
+    ],
+    [
+     "Day 8",
+     "Departure from Osaka"
+    ]
+   ]
+  }
+ ],
+ "visa": [
+  {
+   "id": "thailand",
+   "country": "Thailand",
+   "pkg": "thailand",
+   "type": "free",
+   "typeLabel": "No visa needed",
+   "stay": "Up to 30 days per visit",
+   "cost": "No visa fee",
+   "processing": "Nothing to apply for",
+   "apply": "Fill the arrival card up to 72 hours before landing",
+   "form": "Thailand Digital Arrival Card (free)",
+   "summary": "Indian passport holders can enter Thailand for tourism without a visa. From 15 September 2026 the visa-free stay is 30 days, down from 60.",
+   "before": [
+    "Check your passport is valid for at least 6 months from the day you land",
+    "Complete the Thailand Digital Arrival Card online within 72 hours before arrival",
+    "Save your return ticket, hotel bookings and itinerary on your phone",
+    "Carry cash for immigration checks: the Indian embassy advisory mentions THB 20,000 per person"
+   ],
+   "docs": [
+    "Passport with 6+ months validity",
+    "Confirmed return or onward ticket",
+    "Hotel confirmations and a day-by-day itinerary",
+    "Cash or proof of funds"
+   ],
+   "notes": [
+    "Visitors arriving on or after 15 September 2026 get up to 30 days. Anyone who entered earlier keeps the stay stamped at entry.",
+    "The immigration officer at the airport makes the final decision on entry, so keep your documents handy.",
+    "For more than 30 days you need a visa (Thailand's e-visa portal) or an extension at a local immigration office. Our packages fit comfortably inside 30 days."
+   ],
+   "links": [
+    {
+     "t": "Thailand e-Visa portal (for longer stays)",
+     "u": "https://thaievisa.go.th"
+    }
+   ]
+  },
+  {
+   "id": "indonesia",
+   "country": "Indonesia (Bali)",
+   "pkg": "bali",
+   "type": "arrival",
+   "typeLabel": "Visa on arrival",
+   "stay": "30 days, extendable once by 30 days",
+   "cost": "IDR 500,000 (about ₹2,800) plus Bali tourist levy IDR 150,000",
+   "processing": "e-VOA usually 1–3 working days; counter VOA on the spot",
+   "apply": "e-VOA 1–2 weeks before travel, or pay at Bali airport",
+   "form": "All Indonesia arrival card (free, within 3 days before arrival)",
+   "summary": "Indian tourists get a visa on arrival at Bali airport. Applying for the e-VOA online first lets you skip the payment queue.",
+   "before": [
+    "Apply for the e-VOA on the official Indonesian immigration portal, or plan to pay at the airport counter",
+    "Pay the Bali tourist levy online before you fly, or on arrival",
+    "Complete the Indonesia arrival card within 3 days before landing",
+    "Save the e-VOA and levy QR codes to your phone and keep a printout",
+    "Check your passport is valid for at least 6 months"
+   ],
+   "docs": [
+    "Passport bio page scan and a recent photo (for e-VOA)",
+    "Debit or credit card for the visa fee and levy",
+    "Return or onward ticket",
+    "Accommodation details"
+   ],
+   "notes": [
+    "The airport VOA queue can take 30 to 90 minutes in peak season. That is the main reason to apply for the e-VOA in advance.",
+    "Use the government portal only. Look-alike sites charge extra for the same service.",
+    "Rupee amounts move with the exchange rate, so treat them as a guide."
+   ],
+   "links": [
+    {
+     "t": "Indonesia e-Visa portal",
+     "u": "https://evisa.imigrasi.go.id"
+    }
+   ]
+  },
+  {
+   "id": "uae",
+   "country": "UAE (Dubai)",
+   "pkg": "dubai",
+   "type": "advance",
+   "typeLabel": "Visa before travel",
+   "stay": "30 or 60 days, single or multiple entry",
+   "cost": "About ₹7,500–₹9,500 for 30 days, ₹14,700–₹18,000 for 60 days, service fees included (indicative)",
+   "processing": "3–5 working days; express 1–2 days",
+   "apply": "At least 10 days before travel",
+   "form": "None",
+   "summary": "Most Indian tourists need a UAE visa arranged before flying. Visa on arrival exists only for Indians holding a valid visa or residence permit from countries such as the US, UK, EU, Canada, Australia, Japan, New Zealand, South Korea or Singapore, for up to 14 days.",
+   "before": [
+    "Send us your passport scan, a photo and your travel dates",
+    "We arrange the visa through an authorised UAE partner",
+    "Confirmed hotel booking and return flight are needed for the application",
+    "When the visa arrives, check that the name and passport number match exactly"
+   ],
+   "docs": [
+    "Passport valid for 6+ months from arrival",
+    "Passport-size photo on a white background",
+    "Confirmed return ticket",
+    "Confirmed hotel booking in the UAE"
+   ],
+   "notes": [
+    "Indian travellers cannot apply directly on a government website or at a consulate for a tourist visa. It goes through UAE airlines or authorised agents.",
+    "The visa is generally applied for no more than about 30 days before travel.",
+    "Visa fees are not refunded if an application is rejected."
+   ],
+   "links": []
+  },
+  {
+   "id": "singapore",
+   "country": "Singapore",
+   "pkg": "singmy",
+   "type": "advance",
+   "typeLabel": "Visa before travel",
+   "stay": "Up to 30 days",
+   "cost": "SGD 30 government fee plus agent charges (about ₹3,100 or more in total)",
+   "processing": "About 3–5 working days",
+   "apply": "Within 30 days before arrival",
+   "form": "SG Arrival Card (free, within 3 days before arrival)",
+   "summary": "India is on Singapore's visa-required list. The visa is applied for through an authorised agent or the ICA e-Service, and the SG Arrival Card is a separate free form.",
+   "before": [
+    "Send us your passport, photo and travel dates so we can apply through an authorised channel",
+    "Wait for the approved visa, then keep a copy on your phone",
+    "Submit the SG Arrival Card for every traveller, including children, within 3 days before arrival",
+    "Check your passport is valid for at least 6 months"
+   ],
+   "docs": [
+    "Passport with 6+ months validity",
+    "Recent photo",
+    "Flight and hotel bookings",
+    "Proof of address if it differs from your passport"
+   ],
+   "notes": [
+    "There is no visa on arrival for Indian passport holders in Singapore.",
+    "Airlines flying from India can refuse boarding if the SG Arrival Card is missing.",
+    "A visa does not guarantee entry: immigration officers make the final decision."
+   ],
+   "links": [
+    {
+     "t": "Singapore ICA: visa requirements",
+     "u": "https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa_requirements"
+    }
+   ]
+  },
+  {
+   "id": "malaysia",
+   "country": "Malaysia",
+   "pkg": "singmy",
+   "type": "free",
+   "typeLabel": "No visa needed (to 31 Dec 2026)",
+   "stay": "Up to 30 days",
+   "cost": "No visa fee",
+   "processing": "Nothing to apply for",
+   "apply": "Fill the arrival card within 3 days before arrival",
+   "form": "Malaysia Digital Arrival Card, MDAC (free)",
+   "summary": "Malaysia lets Indian citizens in for up to 30 days without a visa for tourism, currently announced until 31 December 2026.",
+   "before": [
+    "Submit the MDAC online within 3 days before arrival, one for each traveller including children",
+    "Check your passport is valid for at least 6 months and has a blank page",
+    "Keep your return ticket and hotel bookings ready to show",
+    "Carry proof of funds in case immigration asks"
+   ],
+   "docs": [
+    "Passport with 6+ months validity",
+    "Return or onward ticket",
+    "Accommodation confirmation",
+    "Proof of sufficient funds"
+   ],
+   "notes": [
+    "The waiver is announced through 31 December 2026 by the Malaysian government. For travel after that date we re-check before you book.",
+    "Some travellers have been turned back for an incomplete arrival card, no return ticket or unclear funds.",
+    "The waiver covers tourism and social visits, not work or study."
+   ],
+   "links": [
+    {
+     "t": "Malaysian Ministry of Foreign Affairs, New Delhi",
+     "u": "https://www.kln.gov.my/web/ind_new-delhi/requirement_foreigner"
+    },
+    {
+     "t": "Malaysia immigration: MDAC",
+     "u": "https://imigresen-online.imi.gov.my"
+    }
+   ]
+  },
+  {
+   "id": "maldives",
+   "country": "Maldives",
+   "pkg": "maldives",
+   "type": "arrival",
+   "typeLabel": "Free visa on arrival",
+   "stay": "30 days, extendable up to 90 days",
+   "cost": "Free",
+   "processing": "Granted at the immigration counter in Malé",
+   "apply": "Nothing in advance, but submit the traveller declaration first",
+   "form": "Maldives Traveller Declaration, IMUGA (free, within 96 hours before arrival)",
+   "summary": "Every visitor, including Indians, gets a free 30-day tourist visa on arrival at Malé. You need a confirmed booking and an onward ticket.",
+   "before": [
+    "Submit the online traveller declaration within 96 hours before your flight",
+    "Keep your confirmed resort or hotel booking for the whole stay ready to show",
+    "Carry your return ticket, printed and on your phone",
+    "Check your passport is valid for at least 6 months"
+   ],
+   "docs": [
+    "Passport with 6+ months validity",
+    "Confirmed accommodation for the full stay",
+    "Return or onward ticket",
+    "Proof of funds, such as a credit card or prepaid resort booking"
+   ],
+   "notes": [
+    "Immigration can ask for proof of funds and accommodation, so a consolidated resort voucher helps.",
+    "The declaration process has changed before. We confirm the current form when we issue your travel documents."
+   ],
+   "links": []
+  },
+  {
+   "id": "switzerland",
+   "country": "Switzerland",
+   "pkg": "swiss",
+   "type": "advance",
+   "typeLabel": "Schengen visa before travel",
+   "stay": "Up to 90 days in any 180 days, across the Schengen area",
+   "cost": "€90 adult, €45 ages 6–11, free under 6, plus VFS service fee (about ₹1,850–₹2,150)",
+   "processing": "About 15 working days; up to 45 days in peak season",
+   "apply": "Several weeks ahead; book the VFS appointment early",
+   "form": "None (biometric registration at the border under the EES)",
+   "summary": "Switzerland needs a Schengen short-stay visa, applied for in person with fingerprints and a photo. Start well ahead, because appointments and peak-season processing can take weeks.",
+   "before": [
+    "Send us your dates and we'll draft a day-by-day itinerary and bookings for the file",
+    "Buy Schengen travel insurance with at least €30,000 medical cover",
+    "Gather bank statements, income tax returns and employment or business proof",
+    "Book the VFS appointment and attend in person for biometrics",
+    "Track the application and collect your passport"
+   ],
+   "docs": [
+    "Passport valid well beyond your return date, with blank pages",
+    "Two photos, 35 × 45 mm, white or light grey background",
+    "Travel insurance with €30,000+ cover",
+    "Flight and hotel bookings, plus day-by-day itinerary",
+    "Bank statements, ITRs and employer or business documents"
+   ],
+   "notes": [
+    "Apply at the Swiss representation if Switzerland is your main destination, or where you spend the most nights.",
+    "Switzerland typically expects proof of roughly CHF 100 per day of stay.",
+    "ETIAS does not apply to Indian citizens. You need the full visa. The Entry/Exit System now records biometrics at the border in place of passport stamps."
+   ],
+   "links": [
+    {
+     "t": "Swiss State Secretariat for Migration",
+     "u": "https://www.sem.admin.ch"
+    }
+   ]
+  },
+  {
+   "id": "vietnam",
+   "country": "Vietnam",
+   "pkg": "vietnam",
+   "type": "advance",
+   "typeLabel": "e-Visa before travel",
+   "stay": "Up to 90 days, based on the validity you choose",
+   "cost": "USD 25 single entry, USD 50 multiple entry",
+   "processing": "About 3–5 working days",
+   "apply": "At least 2 weeks before travel",
+   "form": "None",
+   "summary": "Indian passport holders need a visa for Vietnam. The e-Visa is the simplest route and is applied for online.",
+   "before": [
+    "Check your passport is valid for at least 6 months, with 2 blank pages",
+    "Apply on the official Vietnam e-Visa portal, or send us the details and we'll do it with you",
+    "Print the approved e-Visa and keep a copy on your phone",
+    "Make a separate application for each traveller, including infants"
+   ],
+   "docs": [
+    "Passport bio page scan",
+    "Recent passport-style photo",
+    "Card for the online fee",
+    "Travel dates and first address in Vietnam"
+   ],
+   "notes": [
+    "Only apply on the official portal. Look-alike sites charge extra fees.",
+    "Airlines can refuse boarding without a valid visa, so print or save it before you leave.",
+    "The e-Visa is for tourism. It is separate from visa on arrival, which needs an approval letter from an agency."
+   ],
+   "links": [
+    {
+     "t": "Vietnam e-Visa portal",
+     "u": "https://evisa.gov.vn"
+    }
+   ]
+  },
+  {
+   "id": "japan",
+   "country": "Japan",
+   "pkg": "japan",
+   "type": "advance",
+   "typeLabel": "Visa before travel",
+   "stay": "Short-term tourist stay, as printed on the visa",
+   "cost": "₹500 government fee plus VFS service charge (about ₹2,100 in total)",
+   "processing": "About 5–10 working days",
+   "apply": "Book a VFS Japan appointment early",
+   "form": "None",
+   "summary": "Indian passport holders need a visa for Japan. There is no visa on arrival and no visa-free entry. Applications go through VFS Global.",
+   "before": [
+    "Prepare a day-by-day schedule of stay with hotel names",
+    "Collect bank statements and income proof",
+    "Book a VFS Japan appointment and submit your documents",
+    "If your visa is issued digitally, save the issuance notice on your phone"
+   ],
+   "docs": [
+    "Passport and a 4.5 × 4.5 cm photo",
+    "Completed visa application form",
+    "Day-by-day itinerary (schedule of stay)",
+    "Bank statements and income tax or employment proof"
+   ],
+   "notes": [
+    "From 1 July 2026 the Embassy of Japan lists the fee for Indian nationals at ₹500, for single or multiple entry. The transit visa has been abolished.",
+    "VFS service charges are added, and appointment availability varies by city.",
+    "Rules and processing times change, so we confirm with the Embassy or VFS before you submit."
+   ],
+   "links": [
+    {
+     "t": "Embassy of Japan in India: visa page",
+     "u": "https://www.in.emb-japan.go.jp/itpr_en/Visa.html"
+    }
+   ]
+  }
+ ]
+}
